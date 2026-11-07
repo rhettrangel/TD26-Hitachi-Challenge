@@ -1,0 +1,183 @@
+{
+  "run_mode": "live_gemini",
+  "model_name_string": "gemini-1.5-flash",
+  "pricing_source": "Google AI Studio Pricing (https://ai.google.dev/pricing), verified Nov 2024 / current",
+  "total_wall_clock_seconds": 0.0449,
+  "total_llm_perception_seconds": 0.0,
+  "total_deterministic_pipeline_seconds": 0.0403,
+  "total_action_execution_seconds": 0.0045,
+  "total_events_processed": 15,
+  "total_tool_calls_executed": 783,
+  "failed_tool_calls": 0,
+  "total_prompt_tokens": 0,
+  "total_output_tokens": 0,
+  "total_tokens": 0,
+  "computed_cost_usd": 0.0,
+  "per_event_breakdown": [
+    {
+      "event_id": "E-01",
+      "category": "Plant Outage & Supplier Delay",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 5.756855010986328,
+      "event_wall_time_ms": 8.23,
+      "actions_executed": 96,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-02",
+      "category": "Unconfirmed Report",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 0.3819465637207031,
+      "event_wall_time_ms": 0.39,
+      "actions_executed": 1,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-03",
+      "category": "Quality Hold",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 7.567882537841797,
+      "event_wall_time_ms": 7.83,
+      "actions_executed": 188,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-04",
+      "category": "Plant Outage",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 2.6540756225585938,
+      "event_wall_time_ms": 2.9,
+      "actions_executed": 59,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-05",
+      "category": "Noise",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 0.186920166015625,
+      "event_wall_time_ms": 0.2,
+      "actions_executed": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-06",
+      "category": "Noise",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 0.21505355834960938,
+      "event_wall_time_ms": 0.22,
+      "actions_executed": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-07",
+      "category": "Noise",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 0.17905235290527344,
+      "event_wall_time_ms": 0.19,
+      "actions_executed": 0,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-08",
+      "category": "Plant Outage",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 2.080678939819336,
+      "event_wall_time_ms": 2.31,
+      "actions_executed": 46,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-09",
+      "category": "Supplier Delay",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 1.9321441650390625,
+      "event_wall_time_ms": 2.23,
+      "actions_executed": 42,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-10",
+      "category": "Supplier Delay",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 1.4040470123291016,
+      "event_wall_time_ms": 1.59,
+      "actions_executed": 28,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-11",
+      "category": "Plant Outage",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 2.6960372924804688,
+      "event_wall_time_ms": 2.9,
+      "actions_executed": 62,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-12",
+      "category": "Supplier Delay",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 1.6620159149169922,
+      "event_wall_time_ms": 1.8,
+      "actions_executed": 27,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-13",
+      "category": "Unconfirmed Report",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 0.3592967987060547,
+      "event_wall_time_ms": 0.37,
+      "actions_executed": 1,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-14",
+      "category": "Quality Hold",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 7.772922515869141,
+      "event_wall_time_ms": 7.94,
+      "actions_executed": 131,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    },
+    {
+      "event_id": "E-15",
+      "category": "Quality Hold",
+      "llm_perception_time_ms": 0.0,
+      "deterministic_pipeline_time_ms": 5.473136901855469,
+      "event_wall_time_ms": 5.56,
+      "actions_executed": 102,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "deterministic_rule_engine"
+    }
+  ]
+}

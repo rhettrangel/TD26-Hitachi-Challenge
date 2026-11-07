@@ -1,0 +1,185 @@
+{
+  "entities": {
+    "Plant": {
+      "count": 6,
+      "attributes": [
+        "plant_id",
+        "name",
+        "city",
+        "slots_per_day"
+      ]
+    },
+    "Model": {
+      "count": 6,
+      "attributes": [
+        "model",
+        "segment"
+      ]
+    },
+    "Part": {
+      "count": 20,
+      "attributes": [
+        "part_id",
+        "name",
+        "category"
+      ]
+    },
+    "Supplier": {
+      "count": 18,
+      "attributes": [
+        "supplier_id",
+        "name",
+        "city"
+      ]
+    },
+    "Shipment": {
+      "count": 364,
+      "attributes": [
+        "shipment_id",
+        "supplier_id",
+        "part_id",
+        "plant_id",
+        "eta_date",
+        "covers_days"
+      ]
+    },
+    "Lot": {
+      "count": 364,
+      "attributes": [
+        "lot_id",
+        "part_id",
+        "supplier_id",
+        "plant_id",
+        "first_build_date",
+        "last_build_date"
+      ]
+    },
+    "ProductionOrder": {
+      "count": 540,
+      "attributes": [
+        "production_order_id",
+        "plant_id",
+        "build_date",
+        "model",
+        "units"
+      ]
+    },
+    "CustomerOrder": {
+      "count": 3263,
+      "attributes": [
+        "customer_order_id",
+        "production_order_id",
+        "dealer_id",
+        "customer_id",
+        "promised_date"
+      ]
+    },
+    "Customer": {
+      "count": 7000,
+      "attributes": [
+        "customer_id",
+        "name",
+        "tier"
+      ]
+    },
+    "Dealer": {
+      "count": 50,
+      "attributes": [
+        "dealer_id",
+        "name",
+        "city",
+        "region"
+      ]
+    },
+    "Vehicle": {
+      "count": 5348,
+      "attributes": [
+        "vin",
+        "production_order_id",
+        "model",
+        "plant_id",
+        "build_date",
+        "dealer_id",
+        "status",
+        "customer_id"
+      ]
+    }
+  },
+  "relationships": [
+    {
+      "source": "Supplier",
+      "target": "Part",
+      "relation": "SUPPLIES"
+    },
+    {
+      "source": "Shipment",
+      "target": "Part",
+      "relation": "CARRIES"
+    },
+    {
+      "source": "Shipment",
+      "target": "Plant",
+      "relation": "DESTINED_FOR"
+    },
+    {
+      "source": "Model",
+      "target": "Part",
+      "relation": "REQUIRES_BOM"
+    },
+    {
+      "source": "Plant",
+      "target": "Model",
+      "relation": "AUTHORIZED_TO_BUILD"
+    },
+    {
+      "source": "ProductionOrder",
+      "target": "Plant",
+      "relation": "SCHEDULED_AT"
+    },
+    {
+      "source": "ProductionOrder",
+      "target": "Model",
+      "relation": "BUILDS_MODEL"
+    },
+    {
+      "source": "CustomerOrder",
+      "target": "ProductionOrder",
+      "relation": "ALLOCATED_TO"
+    },
+    {
+      "source": "CustomerOrder",
+      "target": "Customer",
+      "relation": "PURCHASED_BY"
+    },
+    {
+      "source": "CustomerOrder",
+      "target": "Dealer",
+      "relation": "DELIVERED_VIA"
+    },
+    {
+      "source": "Lot",
+      "target": "Part",
+      "relation": "BATCH_OF"
+    },
+    {
+      "source": "Lot",
+      "target": "Plant",
+      "relation": "USED_AT"
+    },
+    {
+      "source": "Vehicle",
+      "target": "ProductionOrder",
+      "relation": "PRODUCED_IN"
+    },
+    {
+      "source": "Vehicle",
+      "target": "Dealer",
+      "relation": "STOCKED_AT_UNSOLD"
+    },
+    {
+      "source": "Vehicle",
+      "target": "Customer",
+      "relation": "OWNED_BY_SOLD"
+    }
+  ]
+}

@@ -170,13 +170,13 @@ def run_control_tower(
     total_output_tokens = sum(t["output_tokens"] for t in per_event_telemetry)
     http_time_ms = getattr(client, "total_http_time_ms", getattr(client, "total_action_time_ms", 0.0))
 
-    # Pricing calculation (gemini-1.5-flash: $0.075/1M in, $0.30/1M out)
-    cost_usd = (total_prompt_tokens * 0.075 / 1_000_000) + (total_output_tokens * 0.30 / 1_000_000)
+    # Pricing calculation for gemini-3-flash-preview ($0.50/1M in, $3.00/1M out)
+    cost_usd = (total_prompt_tokens * 0.50 / 1_000_000) + (total_output_tokens * 3.00 / 1_000_000)
 
     timing_summary = {
         "run_mode": "live_gemini" if use_live_llm else "cached_or_deterministic",
         "model_name_string": config.MODEL_NAME if use_live_llm else "deterministic_rule_engine",
-        "pricing_source": "Google AI Studio Pricing (https://ai.google.dev/pricing), verified Nov 2024 / current",
+        "pricing_source": "Google AI Studio Pricing (https://ai.google.dev/pricing), retrieved 2026-11-07 ($0.50/1M in, $3.00/1M out)",
         "total_wall_clock_seconds": round(total_wall_clock_s, 4),
         "total_llm_perception_seconds": round(total_llm_time_ms / 1000.0, 4),
         "total_deterministic_pipeline_seconds": round(total_det_time_ms / 1000.0, 4),

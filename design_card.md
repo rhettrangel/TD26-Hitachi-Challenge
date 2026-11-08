@@ -2,7 +2,7 @@
 
 **Challenge:** Hitachi — Hack the Highway: Event-Driven Multi-Agent Control Tower (TAMU Datathon 2026)  
 **System Type:** Hybrid Neuro-Symbolic Multi-Agent System  
-**Model Cited:** `gemini-1.5-flash` (Perception) + Deterministic Policy Solver  
+**Model Cited:** `gemini-3-flash-preview` (Perception) + Deterministic Policy Solver  
 
 ---
 
@@ -57,7 +57,7 @@ The system uses a modular multi-agent architecture designed to process operation
 
 | Component | Implementation | Rationale |
 | :--- | :--- | :--- |
-| **Perception & Entity Grounding** | `gemini-1.5-flash` / Hybrid Rule Engine | Ingests free-text messages and resolves colloquial phrasing (*"the Texas plant"*, *"harness B"*, *"dark from next Friday through Monday Mar 22"*). |
+| **Perception & Entity Grounding** | `gemini-3-flash-preview` / Hybrid Rule Engine | Ingests free-text messages and resolves colloquial phrasing (*"the Texas plant"*, *"harness B"*, *"dark from next Friday through Monday Mar 22"*). |
 | **Ontology & Blast Radius Traversal** | In-Memory Graph (`knowledge_graph.py`) | Traverses 16,955 nodes in $< 0.01$s per event to compute exact downstream entity dependencies without hallucinating IDs. |
 | **Policy Constraint Satisfaction** | Deterministic Solver (`policy_engine.py`) | Enforces calendar rules, slot limits, notification batching, and loaner priority with mathematical guarantees. |
 | **Tool Execution & Logging** | Enterprise Client | Generates validated JSONL logs matching the required enterprise simulator protocol. |

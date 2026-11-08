@@ -1,55 +1,55 @@
-# CHANGELOG: Timing, Attribution & Verification Fixes
+# Summary of Audit, Verification & Code Remediation Fixes
 
-**Date:** 2026-11-07  
-**Objective:** Audit timing, correct model attribution, enforce verifiable telemetry, and remove unverified or promotional claims.
+This document records all modifications made to ensure that timing figures, model attribution, fallback behaviors, and performance metrics are verifiable against disk artifacts.
 
 ---
 
-### Files Touched & Summary of Changes
+## Files Modified & Created
 
-1. **`docs/timing_audit.md` (Created)**
-   * **Why:** Fulfills Step 1 by investigating and reporting what the "0.04s" figure actually measured.
-   * **Details:** Disclosed that the 0.04s figure measured only in-memory deterministic processing (regex string matching, graph traversals, policy constraint solving, in-memory simulator mutations, and file I/O). Documented that zero live LLM API calls and zero network requests occurred during that run.
+### 1. Configuration & Security
+* **`config.py` (New):**
+  * Created single source-of-truth configuration constant `MODEL_NAME = "gemini-3-flash-preview"` (the active, listed Flash model supporting structured JSON schema output with verified quota).
+  * Implemented secure `get_gemini_api_key()` to read `GEMINI_API_KEY` from `~/.config/hitachi/.env` or process environment.
+  * Ensures API keys are never printed, logged, or written to disk. Raises explicit `RuntimeError` if missing or placeholder `keyhere`.
 
-2. **`agents/llm_client.py` (Created)**
-   * **Why:** Implements live Gemini API connectivity (`gemini-1.5-flash`) with structured JSON schema enforcement, error handling, token accounting, and per-event latency measurement.
-   * **Details:** Formats prompts with company entity aliases and calendar context, requests `response_mime_type: "application/json"`, extracts `usageMetadata` (prompt & candidate tokens), and catches API/parse errors to fall back gracefully to the deterministic engine.
+### 2. Execution & Instrumentation
+* **`runner.py` (Modified):**
+  * Added `--mode live` and `--mode cached` execution flags.
+  * Separated timing measurement into per-event:
+    * `llm_perception_time_ms` (external API latency)
+    * `deterministic_pipeline_time_ms` (graph traversal and policy solving)
+    * `total_action_execution_seconds` (simulator mutations)
+    * `total_wall_clock_seconds`
+  * Added token accumulation and pricing formula computation based on retrieved Google AI Studio rates ($0.50/1M prompt, $3.00/1M output).
+  * Directs live prompts to `runs/live_run/prompts/` and raw responses to `runs/live_run/raw/`.
+* **`agents/llm_client.py` (New):**
+  * Implemented `GeminiPerceptionClient` with structured JSON schema (`response_schema`), saving raw responses and exact prompt texts.
+  * Enforces retry logic (max 2 retries) on transient errors.
+* **`agents/coordinator.py` (Modified):**
+  * Configured coordinator to pass prompt and raw output directories to parser and specialist agents.
+* **`agents/event_parser.py` (Modified):**
+  * Step 3 Unrecognized Event Default: Updated unclassified/ambiguous fallback to route to `category="Unconfirmed Report"` (TC6 escalation path, zero operational writes), eliminating default assignment to `Noise`.
+  * Preserved positive identification of brochure requests (E-05, E-06, E-07) as `Noise`.
 
-3. **`agents/event_parser.py` (Modified)**
-   * **Why:** Connects `GeminiPerceptionClient` to the parser workflow while preserving deterministic fallback capabilities.
-   * **Details:** Added `use_live_llm` toggle. When enabled, attempts structured LLM perception first; if an error or malformed JSON occurs, logs the event and triggers the deterministic rule-based parser. Returns `(incidents, telemetry_metrics)`.
+### 3. Verification Artifacts & Test Suites
+* **`docs/model_availability.json` (New):**
+  * Full JSON list response from `https://generativelanguage.googleapis.com/v1beta/models` (API key redacted), documenting retrieval date (2026-11-07), target model availability, and selection of `gemini-3-flash-preview`.
+* **`docs/pricing_source.md` (New):**
+  * Documents the source URL (`https://ai.google.dev/pricing`), retrieval date (2026-11-07), published rates for `gemini-3-flash-preview` ($0.50/1M input, $3.00/1M output), and the exact formula used.
+* **`docs/policy_defaults.md` (New):**
+  * Documents the policy default rule: ambiguous or unclassified messages route to escalation, while `Noise` is reserved exclusively for positively identified non-operational inquiries.
+* **`docs/parser_agreement.md` (New):**
+  * Table comparing LLM category vs. deterministic category across all 15 events. 14/14 completed live calls matched 100%. Documents E-15 hitting free tier rate limit with clean fallback.
+* **`docs/timing_audit.md` (Updated):**
+  * Detailed breakdown explaining that the 0.04s figure measured strictly local in-memory deterministic Python code (regex parsing, graph traversal, policy solving, simulator mutations), with 0 LLM calls and 0 network requests.
+  * Displays the side-by-side comparison of the live run (53.32s wall-clock, 45.20s LLM time, 15,196 tokens, $0.009475 cost) vs. cached run (0.0351s).
+  * Includes a real parsed sample from `runs/live_run/raw/E-12.json`.
+* **`tests/test_unrecognized_fallback.py` (New):**
+  * Test verifying that feeding an ambiguous, unclassifiable message results in 0 operational write actions and exactly 1 escalation.
 
-4. **`agents/coordinator.py` (Modified)**
-   * **Why:** Instrument per-event execution telemetry and pass configuration flags.
-   * **Details:** Decouples `llm_perception_time_ms` from `deterministic_time_ms`. Adds token counts and model attribution to `EventProcessingResult.to_dict()`.
-
-5. **`runner.py` (Modified)**
-   * **Why:** Fulfills Step 2 by adding call-by-call timing instrumentation, token reporting, and cost calculation.
-   * **Details:** Implemented `InstrumentedHttpClient` and `InstrumentedDirectClient`. Decoupled and reported:
-     * LLM perception time per event
-     * Deterministic pipeline time per event
-     * Tool call execution time (in-memory simulator or HTTP server)
-     * Total wall-clock time
-     Outputs audited breakdown to `<out>/timing_summary.json`.
-
-6. **`design_card.md` (Modified)**
-   * **Why:** Fulfills Steps 3, 4, and 5 by correcting model attribution, updating timing/cost metrics, and adding limitations.
-   * **Details:**
-     * Model cited: Exclusively `gemini-1.5-flash` for perception, alongside the deterministic policy solver.
-     * Removed all self-promotional text, "1st place" framing, and unverified latency claims.
-     * Replaced "fractions of a cent" with computed cost of **\$0.001215** per 15-event run at published Google AI Studio rates (\$0.075/1M in, \$0.30/1M out), citing source and date.
-     * Included real structured JSON schema and sample parsed response (E-12).
-     * Scoped accuracy claim to the 15 benchmark events (783 / 783 tool calls executed with 0 errors).
-     * Added explicit **Limitations** section.
-
-7. **`DEVPOST_SUBMISSION.md` (Modified)**
-   * **Why:** Fulfills Steps 3, 4, and 5 for DevPost documentation.
-   * **Details:** Removed all hyperbole and self-promotional framing. Updated latency, model attribution (`gemini-1.5-flash`), cost computation, and scoped benchmark accuracy. Added explicit **Limitations** section.
-
-8. **`dashboard/build_dashboard.py` & `dashboard/index.html` (Modified)**
-   * **Why:** Synchronized dashboard KPI telemetry and judging rubric modal with audited metrics.
-   * **Details:** Updated KPI headers to show "0.04s (In-Memory)", "0 Errors (783/783 OK)", and labeled the modal as "System Overview & Audited Metrics", removing unverified marketing claims.
-
-9. **`runs/cached_run/` & `runs/run1/` (Generated)**
-   * **Why:** Provides transparent, verifiable run artifacts.
-   * **Details:** Stores `action_log.jsonl`, `event_traces.json`, and `timing_summary.json` containing exact microsecond-level timing and token counts.
+### 4. Submission & Dashboard Documentation
+* **`DEVPOST_SUBMISSION.md` & `design_card.md` (Updated):**
+  * Removed all "1st place" framing and self-promotional text.
+  * Replaced "fractions of a cent" with computed commercial inference cost ($0.009475 per 15-event run).
+  * Replaced unverified "100% accuracy" claims with scoped statements: 783/783 deterministic actions against team-authored benchmark; 100% parser agreement on completed live LLM calls.
+  * Added comprehensive **Limitations** section acknowledging benchmark origin, lack of external messy text testing, and pricing retrieval date.

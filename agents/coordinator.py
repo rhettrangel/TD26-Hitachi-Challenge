@@ -67,9 +67,22 @@ class EventProcessingResult:
 class CoordinatingAgent:
     """Master Control Tower Coordinator orchestrating the specialist agent team."""
 
-    def __init__(self, data_dir: str, use_live_llm: bool = False, api_key: Optional[str] = None):
+    def __init__(
+        self,
+        data_dir: str,
+        use_live_llm: bool = False,
+        api_key: Optional[str] = None,
+        raw_output_dir: Optional[str] = None,
+        prompt_output_dir: Optional[str] = None
+    ):
         self.kg = KnowledgeGraph(data_dir)
-        self.parser = EventParser(self.kg, use_live_llm=use_live_llm, api_key=api_key)
+        self.parser = EventParser(
+            self.kg,
+            use_live_llm=use_live_llm,
+            api_key=api_key,
+            raw_output_dir=raw_output_dir,
+            prompt_output_dir=prompt_output_dir
+        )
         self.policy = PolicyEngine(self.kg)
 
         # 3 Specialist Agents

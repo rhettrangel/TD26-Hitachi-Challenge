@@ -37,10 +37,21 @@ class ParsedIncident:
 class EventParser:
     """Hybrid NLU & Deterministic Parser for Wacky Wheels operational feed."""
 
-    def __init__(self, kg: KnowledgeGraph, use_live_llm: bool = False, api_key: Optional[str] = None):
+    def __init__(
+        self,
+        kg: KnowledgeGraph,
+        use_live_llm: bool = False,
+        api_key: Optional[str] = None,
+        raw_output_dir: Optional[str] = None,
+        prompt_output_dir: Optional[str] = None
+    ):
         self.kg = kg
         self.use_live_llm = use_live_llm
-        self.llm_client = GeminiPerceptionClient(api_key=api_key)
+        self.llm_client = GeminiPerceptionClient(
+            api_key=api_key,
+            raw_output_dir=raw_output_dir,
+            prompt_output_dir=prompt_output_dir
+        )
         self._aliases_summary = self._prepare_aliases_context()
 
     def _prepare_aliases_context(self) -> str:
@@ -59,18 +70,47 @@ class EventParser:
             if incidents_raw is not None and len(incidents_raw) > 0:
                 parsed = []
                 for idx, inc in enumerate(incidents_raw, start=1):
+                    # Robust normalization of dates and null-strings
+                    p_plant = inc.get("plant_id")
+                    if p_plant == "null":
+                        p_plant = None
+                    p_part = inc.get("part_id")
+                    if p_part == "null":
+                        p_part = None
+                    p_supp = inc.get("supplier_id")
+                    if p_supp == "null":
+                        p_supp = None
+                    p_start = inc.get("start_date")
+                    if p_start == "null":
+                        p_start = None
+                    p_end = inc.get("end_date")
+                    if p_end == "null":
+                        p_end = None
+                    # If end_date is missing for outage or delay, default to start_date
+                    if p_start and not p_end:
+                        p_end = p_start
+
+                    p_min_resched = inc.get("min_reschedule_date")
+                    if p_min_resched == "null":
+                        p_min_resched = None
+                    if not p_min_resched and p_end:
+                        try:
+                            p_min_resched = self._next_working_day(p_end)
+                        except Exception:
+                            p_min_resched = p_end
+
                     parsed.append(ParsedIncident(
                         event_id=eid,
                         incident_sub_id=f"{eid}-{idx}" if len(incidents_raw) > 1 else eid,
-                        category=inc.get("category", "Noise"),
-                        plant_id=inc.get("plant_id"),
-                        part_id=inc.get("part_id"),
-                        supplier_id=inc.get("supplier_id"),
+                        category=inc.get("category", "Unconfirmed Report"),
+                        plant_id=p_plant,
+                        part_id=p_part,
+                        supplier_id=p_supp,
                         shipment_id=inc.get("shipment_id"),
                         lot_id=inc.get("lot_id"),
-                        start_date=inc.get("start_date"),
-                        end_date=inc.get("end_date"),
-                        min_reschedule_date=inc.get("min_reschedule_date"),
+                        start_date=p_start,
+                        end_date=p_end,
+                        min_reschedule_date=p_min_resched,
                         reason=inc.get("reason"),
                         raw_text=text
                     ))
@@ -197,12 +237,13 @@ class EventParser:
                 raw_text=text
             )
 
-        # Fallback to noise if unrecognized
+        # Fallback to Unconfirmed Report (TC6 path: escalate only, zero operational writes)
+        # Policy default: Unrecognized or ambiguous events must route to escalation, never Noise.
         return ParsedIncident(
             event_id=event_id,
             incident_sub_id=sub_id,
-            category="Noise",
-            reason="Unrecognized event pattern",
+            category="Unconfirmed Report",
+            reason="Unrecognized or ambiguous operational pattern; routed to supervisor review per Policy Rule 8",
             raw_text=text
         )
 

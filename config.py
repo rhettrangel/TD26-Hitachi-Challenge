@@ -9,8 +9,9 @@ from typing import Optional
 
 
 # Single config constant for the current Flash model (Step 1)
-# 'gemini-flash-latest' points to the active Flash release with structured JSON output support.
-MODEL_NAME = "gemini-flash-latest"
+# 'gemini-3-flash-preview' is the active Flash model supporting structured JSON schema,
+# robust temporal reasoning across event boundaries, and verified operational quota.
+MODEL_NAME = "gemini-3-flash-preview"
 
 
 def get_gemini_api_key() -> str:

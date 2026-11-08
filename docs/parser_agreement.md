@@ -21,6 +21,6 @@ Analysis of classification agreement across all 15 benchmark events between live
 | **E-15** | Quota Exceeded (HTTP 429) | Quality Hold | Fallback | Daily free tier request cap reached on 15th live call; deterministic fallback applied. Answer key matches deterministic path. |
 
 ## Summary of Findings
-- **Category Agreement on Live Calls**: 14 of 14 completed live Gemini calls (100%) exactly agreed with the deterministic baseline parser on incident category classification (Plant Outage, Supplier Delay, Quality Hold, Noise, Unconfirmed Report).
+- **Live Call Success**: 14 of 15 live calls succeeded (HTTP 200). E-15 returned HTTP 429 (free-tier daily quota) and fell back to deterministic parsing.
+- **Category Agreement on Successful Calls**: 14 of 14 successful calls (100%) exactly agreed with the deterministic baseline parser on incident category classification (Plant Outage, Supplier Delay, Quality Hold, Noise, Unconfirmed Report).
 - **Sub-field Resolution Caveat (E-09)**: While category agreement was 100%, extraction was not complete across all entity fields. On event E-09, the LLM extracted plant `P_AL` and the delay dates (`2027-03-29` to `2027-04-01`), but missed extracting the supplier alias string (`Orbit` / SUP-09) and part number (`CAM-360`). Consequently, the live execution pipeline triggered 0 downstream rebalancing actions for E-09 (compared to 42 actions in deterministic mode). The ground truth confirms both the supplier ID and part number are required for full schedule rebalancing.
-- **Rate Limit Resilience**: 1 call (E-15) hit Google AI Studio's Free Tier daily quota limit (`RESOURCE_EXHAUSTED` 429) on the 15th live call and cleanly engaged the deterministic fallback path without crashing the system.

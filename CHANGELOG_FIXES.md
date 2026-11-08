@@ -39,7 +39,7 @@ This document records all modifications made to ensure that timing figures, mode
 * **`docs/policy_defaults.md` (New):**
   * Documents the policy default rule: ambiguous or unclassified messages route to escalation, while `Noise` is reserved exclusively for positively identified non-operational inquiries.
 * **`docs/parser_agreement.md` (New):**
-  * Table comparing LLM category vs. deterministic category across all 15 events. 14/14 completed live calls matched on category (100%). Documents the E-09 sub-field extraction miss (supplier and part omitted, yielding 0 live actions vs 42 deterministic) and E-15 hitting free tier rate limit with clean fallback.
+  * Table comparing LLM category vs. deterministic category across all 15 events. 14 of 15 live calls succeeded (HTTP 200). E-15 returned HTTP 429 (free-tier daily quota) and fell back to deterministic parsing. Across the 14 of 14 successful calls (100%), the model matched on category. Documents the E-09 sub-field extraction miss (supplier and part omitted, yielding 0 live actions vs 42 deterministic).
 * **`docs/timing_audit.md` (Updated):**
   * Detailed breakdown explaining that the 0.04s figure measured strictly local in-memory deterministic Python code (regex parsing, graph traversal, policy solving, simulator mutations), with 0 LLM calls and 0 network requests.
   * Displays the side-by-side comparison of the live run (53.32s wall-clock, 37.33s LLM time summed from `runs/live_run/timing_summary.json`, 22,911 total billed tokens, $0.033 cost) vs. cached run (0.0351s).

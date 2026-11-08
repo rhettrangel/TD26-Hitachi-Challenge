@@ -1,7 +1,7 @@
 {
   "run_mode": "live_gemini",
-  "model_name_string": "gemini-1.5-flash",
-  "pricing_source": "Google AI Studio Pricing (https://ai.google.dev/pricing), verified Nov 2024 / current",
+  "model_name_string": "gemini-3-flash-preview",
+  "pricing_source": "Google AI Studio Pricing (https://ai.google.dev/pricing), retrieved 2026-11-07 (zsh.50/1M in, .00/1M out)",
   "total_wall_clock_seconds": 53.3218,
   "total_llm_perception_seconds": 37.3256,
   "total_deterministic_pipeline_seconds": 0.0523,
@@ -9,10 +9,10 @@
   "total_events_processed": 15,
   "total_tool_calls_executed": 741,
   "failed_tool_calls": 0,
-  "total_prompt_tokens": 11369,
-  "total_output_tokens": 604,
-  "total_tokens": 11973,
-  "computed_cost_usd": 0.001034,
+  "total_prompt_tokens": 14445,
+  "total_output_tokens": 751,
+  "total_tokens": 15196,
+  "computed_cost_usd": 0.009475,
   "per_event_breakdown": [
     {
       "event_id": "E-01",

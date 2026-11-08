@@ -33,7 +33,7 @@ The system serves as an operational control tower for Wacky Wheels Co.:
 
 The platform uses a hybrid **Neuro-Symbolic architecture** to avoid pure-LLM pitfalls (hallucinated identifiers, slot overbooking, and calendar math errors):
 
-1. **Perception Layer (`gemini-1.5-flash`):** Ingests raw text, maps colloquial terms via `data/aliases.csv`, converts relative dates into ISO weekdays via `data/calendar.csv`, and requests structured JSON outputs.
+1. **Perception Layer (`gemini-3-flash-preview`):** Ingests raw text, maps colloquial terms via `data/aliases.csv`, converts relative dates into ISO weekdays via `data/calendar.csv`, and requests structured JSON outputs.
 2. **Knowledge Graph Engine (`knowledge_graph.py`):** Models the enterprise domain (Plants, Models, Parts, Lots, Orders, VINs) and performs runtime breadth-first traversals to identify impacted records.
 3. **Deterministic Policy Solver (`policy_engine.py`):** Enforces handbook rules (slot caps, single dealer notifications, loaner priority) with mathematical guarantees.
 4. **Specialist Dispatcher (`agents/`):** A 1 Coordinator + 3 Specialist agent structure interfacing with enterprise systems.
@@ -43,24 +43,28 @@ The platform uses a hybrid **Neuro-Symbolic architecture** to avoid pure-LLM pit
 
 ### 📊 Verified Performance & Metrics
 
-All metrics trace directly to `runs/cached_run/timing_summary.json` and `docs/timing_audit.md`:
+All metrics trace directly to `runs/live_run/timing_summary.json`, `runs/cached_run/timing_summary.json`, `docs/parser_agreement.md`, and `docs/pricing_source.md`:
 
-* **Benchmark Accuracy:** **100% Policy Adherence (783 / 783 tool calls executed with 0 errors)** against the 15 benchmark events evaluated on the enterprise simulator.
-* **Deterministic Pipeline Wall-Clock Latency:** **0.0396 seconds** for the full 15-event benchmark run (0.0352s planning + 0.0043s state execution).
-* **Perception Latency:** 0.00s in cached/deterministic baseline mode. Live LLM perception latency depends on external API round-trip times.
-* **Model Attribution:** `gemini-1.5-flash` (Perception) + Deterministic Policy Engine.
-* **Computed Efficiency & Cost:**
-  * Google AI Studio published rates (https://ai.google.dev/pricing, Nov 2024 / current): \$0.075 / 1M input tokens, \$0.30 / 1M output tokens.
-  * Estimated Volume (15 events): 10,200 prompt tokens + 1,500 output tokens.
-  * Computed Inference Cost: **\$0.001215** per full 15-event run.
+* **Benchmark Accuracy:** Verified across the 15 team-authored ground-truth events:
+  * Deterministic Layer: **783 / 783 tool calls executed with 0 errors** against the enterprise simulator.
+  * LLM Perception Agreement: **14 of 14 completed live calls (100%)** agreed on event category with the deterministic baseline parser.
+* **Timing Breakdown:**
+  * **Live Gemini Run (`runs/live_run/`):** **53.3218 s** total wall-clock time (45.20s LLM round-trip perception time, 0.0523s deterministic pipeline, 0.0087s action execution).
+  * **Deterministic Baseline (`runs/cached_run/`):** **0.0357 s** total wall-clock time (deterministic only, no LLM calls, no network).
+* **Model Attribution:** `gemini-3-flash-preview` (Perception) + Deterministic Policy Engine.
+* **Computed Commercial Efficiency & Cost:**
+  * Google AI Studio published rates (`https://ai.google.dev/pricing`, retrieved 2026-11-07): $0.50 / 1M input tokens, $3.00 / 1M output tokens.
+  * Measured Volume (15 events): 14,445 prompt tokens + 751 output tokens = 15,196 total tokens.
+  * Computed Commercial Inference Cost: **$0.009475** (approx. 0.95 cents per full 15-event run).
 
 ---
 
 ### ⚠️ Limitations
 
-1. **Benchmark Scope:** The 15 test events were provided as part of the challenge scenario. The ground-truth policy rules reflect the challenge specification.
-2. **Perception Generalization:** LLM perception accuracy on messy text outside the provided 15 events and `aliases.csv` mappings has not been independently evaluated on unseen external datasets.
-3. **Latency Benchmarking:** The 0.0396s figure represents local in-memory graph traversal and simulator execution. It does not measure external internet latency or live cloud API round trips (detailed in `docs/timing_audit.md`).
+1. **Benchmark Scope:** The 15 test events were hand-written by the team; the ground truth was built by the same team.
+2. **Perception Generalization:** LLM perception accuracy on messy real-world text outside the 15 team-authored events has not been measured independently.
+3. **Latency Benchmarking:** The 0.0357s figure represents local in-memory deterministic processing only. Real API calls are subject to external network latency (45.20s total across live calls).
+4. **Pricing Citation:** Commercial pricing rates were retrieved from Google AI Studio on 2026-11-07 ($0.50/1M input, $3.00/1M output).
 
 ---
 
@@ -69,4 +73,4 @@ All metrics trace directly to `runs/cached_run/timing_summary.json` and `docs/ti
 * **[0:00 - 0:30] Context:** Open dashboard. *"Welcome to the Hitachi Lumada Control Tower. Wacky Wheels Co. builds vehicles Just-In-Time with zero parts inventory. A late shipment, factory blackout, or defective lot causes an immediate domino effect. Here is how our 1 Coordinator + 3 Specialist agents handle it."*
 * **[0:30 - 1:00] Supplier Delay:** Click **E-12 (Supplier Delay)**. Show the Knowledge Graph traversing `Shipment SH-0182 → CAM-360 → Summit → PO-0316 → Customer Orders → Dealer D07`. In **Executive & Actions**, show the rescheduled build slot, the consolidated dealer alert, and the VIP loaner deployment.
 * **[1:00 - 1:30] Quality Containment:** Click **E-15 (Quality Hold)**. Show how defective Lot LOT-0191 is held, triggering showroom stop-sale orders across 25 dealerships and safety recall notifications to owners of sold vehicles.
-* **[1:30 - 2:00] Guardrails & Telemetry:** Click **E-05 (Noise)** to demonstrate zero write actions, and **E-02 (Rumor)** to show the Human-in-the-Loop escalation panel. Click **DevPost & Judging Brief** in the header to show the verified metrics: *"783 automated actions, 0 errors against the benchmark, and an audited deterministic pipeline latency of 0.0396s."*
+* **[1:30 - 2:00] Guardrails & Telemetry:** Click **E-05 (Noise)** to demonstrate zero write actions, and **E-02 (Rumor)** to show the Human-in-the-Loop escalation panel. Click **DevPost & Judging Brief** in the header to show the verified metrics: *"783 automated actions in deterministic baseline, 0 errors against the benchmark, and measured live LLM token usage of 15,196 tokens ($0.0095)."*

@@ -1,7 +1,7 @@
 {
   "retrieval_date": "2026-11-07T18:11:05.549698",
   "endpoint": "https://generativelanguage.googleapis.com/v1beta/models",
-  "chosen_model": "gemini-flash-latest",
+  "chosen_model": "gemini-3-flash-preview",
   "target_model_verified": true,
   "models": [
     {
@@ -868,5 +868,5 @@
       ]
     }
   ],
-  "notes": "Target gemini-1.5-flash is retired/not listed on v1beta. Endpoint lists gemini-flash-latest with generateContent and structured JSON support, which is verified and selected as config.MODEL_NAME per Step 1 instructions."
+  "notes": "Target gemini-1.5-flash is retired/not listed on v1beta. The endpoint lists gemini-3-flash-preview supporting generateContent, countTokens, and structured JSON schema output, verified operational with active quota and selected as config.MODEL_NAME per Step 1 instructions."
 }

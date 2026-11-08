@@ -86,7 +86,7 @@ def run_control_tower(
     events_path: str,
     out_dir: str,
     server_url: str = None,
-    use_live_llm: bool = False,
+    mode: str = "cached",
     api_key: str = None
 ):
     os.makedirs(out_dir, exist_ok=True)
@@ -97,10 +97,14 @@ def run_control_tower(
     with open(events_path, encoding="utf-8") as f:
         events = json.load(f)
 
-    mode_label = "LIVE GEMINI 1.5 FLASH" if use_live_llm else "DETERMINISTIC / CACHED BASELINE"
+    use_live_llm = (mode == "live")
+    raw_out = os.path.join(out_dir, "raw") if use_live_llm else None
+    prompts_out = os.path.join(out_dir, "prompts") if use_live_llm else None
+
+    mode_label = "LIVE GEMINI FLASH" if use_live_llm else "DETERMINISTIC / CACHED BASELINE"
     print(f"Loaded {len(events)} events from {events_path}")
     print(f"Output directory: {out_dir}")
-    print(f"Perception Mode: {mode_label}")
+    print(f"Perception Mode: {mode_label} (mode={mode})")
 
     if server_url:
         print(f"Connecting to live enterprise server at {server_url}...")
@@ -110,7 +114,13 @@ def run_control_tower(
         ent = Enterprise(data_dir)
         client = InstrumentedDirectClient(ent, action_log_path)
 
-    coordinator = CoordinatingAgent(data_dir, use_live_llm=use_live_llm, api_key=api_key)
+    coordinator = CoordinatingAgent(
+        data_dir,
+        use_live_llm=use_live_llm,
+        api_key=api_key,
+        raw_output_dir=raw_out,
+        prompt_output_dir=prompts_out
+    )
     traces = []
     per_event_telemetry = []
 
@@ -165,7 +175,7 @@ def run_control_tower(
 
     timing_summary = {
         "run_mode": "live_gemini" if use_live_llm else "cached_or_deterministic",
-        "model_name_string": "gemini-1.5-flash" if use_live_llm else "deterministic_rule_engine",
+        "model_name_string": config.MODEL_NAME if use_live_llm else "deterministic_rule_engine",
         "pricing_source": "Google AI Studio Pricing (https://ai.google.dev/pricing), verified Nov 2024 / current",
         "total_wall_clock_seconds": round(total_wall_clock_s, 4),
         "total_llm_perception_seconds": round(total_llm_time_ms / 1000.0, 4),
@@ -211,11 +221,13 @@ def main():
     parser.add_argument("--events", default="data/events.json", help="Path to events JSON")
     parser.add_argument("--out", default="runs/submission", help="Output directory for action_log.jsonl")
     parser.add_argument("--server", default=None, help="HTTP URL of enterprise_server (optional)")
-    parser.add_argument("--live-llm", action="store_true", help="Enable live Gemini API calls for perception")
+    parser.add_argument("--mode", choices=["live", "cached"], default="cached", help="Perception mode: 'live' (live Gemini API calls) or 'cached' (deterministic baseline)")
+    parser.add_argument("--live-llm", action="store_true", help="Deprecated alias for --mode live")
     parser.add_argument("--api-key", default=None, help="Gemini API Key (optional, defaults to GEMINI_API_KEY env)")
     args = parser.parse_args()
 
-    run_control_tower(args.data, args.events, args.out, args.server, args.live_llm, args.api_key)
+    mode = "live" if args.live_llm else args.mode
+    run_control_tower(args.data, args.events, args.out, args.server, mode, args.api_key)
 
 
 if __name__ == "__main__":

@@ -97,45 +97,44 @@ Perception calls request structured JSON using the following schema:
 ```
 
 **Real Sample Parsed Output (Event E-12):**
+*(Source: `runs/live_run/raw/E-12.json`)*
 ```json
 {
-  "incidents": [
-    {
-      "category": "Supplier Delay",
-      "plant_id": "P_IN",
-      "part_id": "CAM-360",
-      "shipment_id": "SH-0182",
-      "start_date": "2027-03-15",
-      "end_date": "2027-03-18",
-      "min_reschedule_date": "2027-03-18",
-      "reason": "Shipment SH-0182 delayed due to port congestion"
-    }
-  ]
+  "category": "Supplier Delay",
+  "plant_id": "P_IN",
+  "part_id": "CAM-360",
+  "shipment_id": "SH-0182",
+  "start_date": "2027-03-15",
+  "end_date": "2027-03-18",
+  "reason": "port congestion"
 }
 ```
 
-**Failure Handling Code Path:** In `agents/llm_client.py`, API requests are wrapped in `try...except (urllib.error.HTTPError, json.JSONDecodeError, Exception)`. When an API call fails or produces malformed JSON, the client logs the error and returns `None`. `agents/event_parser.py` detects `incidents_raw is None`, records `fallback_used = True`, and seamlessly triggers the deterministic rule-based parser. If the rule parser encounters completely unrecognized text, it classifies the incident as `Noise`, preventing accidental writes.
+**Failure Handling Code Path:** In `agents/llm_client.py`, API requests are wrapped in `try...except (urllib.error.HTTPError, json.JSONDecodeError, Exception)`. When an API call fails or produces malformed JSON, the client logs the error and returns `None`. `agents/event_parser.py` detects `incidents_raw is None`, records `fallback_used = True`, and seamlessly triggers the deterministic rule-based parser. If the rule parser encounters completely unrecognized text, it classifies the incident as `Unconfirmed Report` (TC6 escalation path, 0 operational writes), routing the issue to a supervisor per Policy Rule 8.
 
 ---
 
 ### 4. Verified Performance Metrics
 
-All figures below trace directly to `runs/cached_run/timing_summary.json` and `docs/timing_audit.md`:
+All figures below trace directly to `runs/live_run/timing_summary.json`, `runs/cached_run/timing_summary.json`, `docs/parser_agreement.md`, and `docs/pricing_source.md`:
 
 * **Event Set:** 15 benchmark events (`data/events.json`).
-* **Deterministic Policy Replay Accuracy:** **100% (783 / 783 valid tool calls, 0 tool errors)** against the ground-truth enterprise simulator.
-* **Deterministic Pipeline Wall-Clock Latency:** **0.0396 seconds** for the full 15-event run (comprising 0.0352s deterministic planning and 0.0043s state mutation).
-* **Perception Latency:** 0.00s in cached/deterministic mode; live LLM network latency is external and subject to API round-trip times.
+* **Deterministic Policy Replay:** **783 / 783 valid tool calls (0 errors)** on the 15 team-authored ground-truth events.
+* **Timing Breakdown:**
+  * **Live Gemini Run (`runs/live_run/`):** 53.32s wall-clock time (45.20s LLM round-trip perception time, 0.052s deterministic planning, 0.009s state execution).
+  * **Deterministic Baseline (`runs/cached_run/`):** 0.0357s wall-clock time (deterministic only, zero LLM calls, zero network calls).
+* **Parser Agreement:** 14 of 14 completed live calls (100%) exactly agreed with the deterministic baseline on incident category.
 * **Token & Cost Accounting:**
-  * Model String: `gemini-1.5-flash`
-  * Pricing: \$0.075 / 1M input tokens, \$0.30 / 1M output tokens (Source: Google AI Studio pricing, https://ai.google.dev/pricing, verified Nov 2024 / current).
-  * Estimated Volume (15 events): 10,200 prompt tokens + 1,500 candidate tokens = 11,700 total tokens.
-  * Computed Cost per Full 15-Event Run: **\$0.001215** ($10,200 \times 7.5\times 10^{-8} + 1,500 \times 3.0\times 10^{-7}$).
+  * Model String: `gemini-3-flash-preview`
+  * Pricing: $0.50 / 1M input tokens, $3.00 / 1M output tokens (Source: Google AI Studio pricing, `https://ai.google.dev/pricing`, retrieved 2026-11-07).
+  * Measured Volume (15 events): 14,445 prompt tokens + 751 output tokens = 15,196 total tokens.
+  * Computed Commercial Cost per Full 15-Event Run: **$0.009475** (approx. 0.95 cents).
 
 ---
 
 ### 5. Limitations
 
-1. **Benchmark Scope:** The 15 test events were provided by the challenge organizers. Ground-truth expectations are based on the policy handbook rules.
-2. **Perception Generalization:** LLM perception accuracy on unstructured text outside the provided 15 benchmark events and `aliases.csv` mappings has not been independently measured on external real-world production datasets.
+1. **Benchmark Scope:** The 15 test events were hand-written by the team; the ground truth was built by the same team.
+2. **Perception Generalization:** LLM perception accuracy on messy, real-world manufacturing text outside the 15 team-authored events has not been measured independently.
+3. **Pricing Date:** Pricing rates of $0.50/1M input and $3.00/1M output were retrieved from `https://ai.google.dev/pricing` on 2026-11-07. Latency and token figures derive directly from the measured live run in `runs/live_run/timing_summary.json`.
 3. **Execution Latency Sourcing:** The 0.0396s figure reflects in-memory deterministic graph traversal and local simulator updates. It does not reflect external internet latency or live cloud API round-trip times, as detailed in `docs/timing_audit.md`.

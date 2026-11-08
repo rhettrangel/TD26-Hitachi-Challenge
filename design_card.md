@@ -119,7 +119,7 @@ Perception calls request structured JSON using the following schema:
 All figures below trace directly to `runs/live_run/timing_summary.json`, `runs/cached_run/timing_summary.json`, `docs/parser_agreement.md`, and `docs/pricing_source.md`:
 
 * **Event Set:** 15 benchmark events (`data/events.json`).
-* **Deterministic Policy Replay:** **783 / 783 valid tool calls (0 errors)** on the 15 team-authored ground-truth events.
+* **Deterministic Policy Replay:** **783 / 783 valid tool calls (0 errors)** in the deterministic baseline on the 15 team-authored ground-truth events (741 tool calls executed in the live run due to E-09 omitting supplier/part fields and E-15 hitting daily API rate limits).
 * **Timing Breakdown:**
   * **Live Gemini Run (`runs/live_run/`):** 53.32s wall-clock time (45.20s LLM round-trip perception time, 0.052s deterministic planning, 0.009s state execution).
   * **Deterministic Baseline (`runs/cached_run/`):** 0.0357s wall-clock time (deterministic only, zero LLM calls, zero network calls).

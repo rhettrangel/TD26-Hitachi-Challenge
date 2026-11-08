@@ -23,8 +23,8 @@ elapsed = time.time() - t_start
   1. Regex and rule-based pattern matching in `event_parser.py` across 15 event text payloads.
   2. In-memory Knowledge Graph traversals (BFS and dictionary lookups) across 16,955 nodes in `knowledge_graph.py`.
   3. In-memory deterministic policy constraint solving (slot assignment, loaner prioritization) in `policy_engine.py`.
-  4. In-memory state mutations in `Enterprise` across 783 tool calls using `InstrumentedDirectClient`.
-  5. File I/O: 783 JSON lines written to `action_log.jsonl` and writing `event_traces.json`.
+  4. In-memory state mutations in `Enterprise` across 783 tool calls in the deterministic baseline using `InstrumentedDirectClient`.
+  5. File I/O: 783 JSON lines written to `action_log.jsonl` in the deterministic baseline and writing `event_traces.json`.
 * **NOT Included in 0.04s:**
   1. **Zero LLM API calls:** No external or local LLM inference was executed within that timer.
   2. **Zero network calls:** `InstrumentedDirectClient` executed in-process; no HTTP sockets were opened.
@@ -49,7 +49,7 @@ elapsed = time.time() - t_start
 | **LLM Perception Time** | **45.20 s** (sum across calls) | **0.0000 s** | Real API round-trip latency. |
 | **Deterministic Pipeline Time** | **0.0523 s** | **0.0314 s** | Graph traversal + policy solving. |
 | **Action Execution Time** | **0.0087 s** | **0.0042 s** | In-memory simulator action dispatch. |
-| **Tool Calls Executed** | **741 calls** | **783 calls** | Executed write operations. |
+| **Tool Calls Executed** | **741 calls** (live run: E-15 failed with HTTP 429 and E-09 produced 0 live actions) | **783 calls** (deterministic baseline) | Executed write operations. |
 | **Failed Tool Calls** | **0 calls** | **0 calls** | Zero policy violations. |
 | **Total Tokens** | **14,445 prompt / 751 output** | **0 prompt / 0 output** | Measured from `usageMetadata`. |
 | **Computed Cost** | **$0.033** | **$0.000000** | Standard published rates ($0.50/1M in, $3.00/1M out, including thinking tokens). |

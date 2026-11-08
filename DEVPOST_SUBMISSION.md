@@ -54,8 +54,8 @@ All metrics trace directly to `runs/live_run/timing_summary.json`, `runs/cached_
 * **Model Attribution:** `gemini-3-flash-preview` (Perception) + Deterministic Policy Engine.
 * **Computed Commercial Efficiency & Cost:**
   * Google AI Studio published rates (`https://ai.google.dev/pricing`, retrieved 2026-11-07): $0.50 / 1M input tokens, $3.00 / 1M output tokens.
-  * Measured Volume (15 events): 14,445 prompt tokens + 751 output tokens = 15,196 total tokens.
-  * Computed Commercial Inference Cost: **$0.009475** (approx. 0.95 cents per full 15-event run).
+  * Measured Volume (15 events): 14,445 prompt tokens + 751 output tokens (+ 7,715 thinking tokens) = 22,911 total billed tokens.
+  * Computed Commercial Inference Cost: **$0.033** (computed as $(14{,}445 \times \$0.0000005) + ((751 + 7{,}715) \times \$0.000003) = \$0.03262$ per full 15-event run).
 
 ---
 
@@ -73,4 +73,4 @@ All metrics trace directly to `runs/live_run/timing_summary.json`, `runs/cached_
 * **[0:00 - 0:30] Context:** Open dashboard. *"Welcome to the Hitachi Lumada Control Tower. Wacky Wheels Co. builds vehicles Just-In-Time with zero parts inventory. A late shipment, factory blackout, or defective lot causes an immediate domino effect. Here is how our 1 Coordinator + 3 Specialist agents handle it."*
 * **[0:30 - 1:00] Supplier Delay:** Click **E-12 (Supplier Delay)**. Show the Knowledge Graph traversing `Shipment SH-0182 → CAM-360 → Summit → PO-0316 → Customer Orders → Dealer D07`. In **Executive & Actions**, show the rescheduled build slot, the consolidated dealer alert, and the VIP loaner deployment.
 * **[1:00 - 1:30] Quality Containment:** Click **E-15 (Quality Hold)**. Show how defective Lot LOT-0191 is held, triggering showroom stop-sale orders across 25 dealerships and safety recall notifications to owners of sold vehicles.
-* **[1:30 - 2:00] Guardrails & Telemetry:** Click **E-05 (Noise)** to demonstrate zero write actions, and **E-02 (Rumor)** to show the Human-in-the-Loop escalation panel. Click **DevPost & Judging Brief** in the header to show the audited metrics: *"783 automated actions in the deterministic baseline, 0 simulator errors against the benchmark, and measured live run token usage of 15,196 tokens ($0.0095 across 15 events in `runs/live_run/timing_summary.json`)."*
+* **[1:30 - 2:00] Guardrails & Telemetry:** Click **E-05 (Noise)** to demonstrate zero write actions, and **E-02 (Rumor)** to show the Human-in-the-Loop escalation panel. Click **DevPost & Judging Brief** in the header to show the audited metrics: *"783 automated actions in the deterministic baseline, 0 simulator errors against the benchmark, and measured live run token usage of 22,911 total billed tokens ($0.033 across 15 events in `runs/live_run/timing_summary.json`)."*

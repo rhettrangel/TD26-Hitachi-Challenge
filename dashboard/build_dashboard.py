@@ -910,7 +910,7 @@ def generate_dashboard():
           </div>
           <div class="rubric-card">
             <div class="rubric-card-title">4. Efficiency & Audited Latency (10%)</div>
-            <p><strong>In-Memory Deterministic Latency: 0.0351s:</strong> Model cited: <code>gemini-3-flash-preview</code> (live run wall clock: 53.32s, 15,196 tokens). Computed commercial run cost: $0.009475 based on published rates ($0.50/1M in, $3.00/1M out; audited in <code>docs/timing_audit.md</code>).</p>
+            <p><strong>In-Memory Deterministic Latency: 0.0351s:</strong> Model cited: <code>gemini-3-flash-preview</code> (live run wall clock: 53.32s, 22,911 total billed tokens). Computed commercial run cost: $0.033 based on published rates ($0.50/1M in, $3.00/1M out including thinking tokens; audited in <code>docs/timing_audit.md</code>).</p>
           </div>
         </div>
 

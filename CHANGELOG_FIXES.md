@@ -42,7 +42,7 @@ This document records all modifications made to ensure that timing figures, mode
   * Table comparing LLM category vs. deterministic category across all 15 events. 14/14 completed live calls matched on category (100%). Documents the E-09 sub-field extraction miss (supplier and part omitted, yielding 0 live actions vs 42 deterministic) and E-15 hitting free tier rate limit with clean fallback.
 * **`docs/timing_audit.md` (Updated):**
   * Detailed breakdown explaining that the 0.04s figure measured strictly local in-memory deterministic Python code (regex parsing, graph traversal, policy solving, simulator mutations), with 0 LLM calls and 0 network requests.
-  * Displays the side-by-side comparison of the live run (53.32s wall-clock, 45.20s LLM time, 15,196 tokens, $0.009475 cost) vs. cached run (0.0351s).
+  * Displays the side-by-side comparison of the live run (53.32s wall-clock, 45.20s LLM time, 22,911 total billed tokens, $0.033 cost) vs. cached run (0.0351s).
   * Includes a real parsed sample from `runs/live_run/raw/E-12.json`.
 * **`tests/test_unrecognized_fallback.py` (New):**
   * Test verifying that feeding an ambiguous, unclassifiable message results in 0 operational write actions and exactly 1 escalation.
@@ -50,6 +50,6 @@ This document records all modifications made to ensure that timing figures, mode
 ### 4. Submission & Dashboard Documentation
 * **`DEVPOST_SUBMISSION.md` & `design_card.md` (Updated):**
   * Removed all "1st place" framing and self-promotional text.
-  * Replaced "fractions of a cent" with computed commercial inference cost ($0.009475 per 15-event run).
+  * Replaced "fractions of a cent" with computed commercial inference cost ($0.033 per 15-event run, including thinking tokens).
   * Replaced unverified "100% accuracy" claims with scoped statements: 783/783 deterministic actions against team-authored benchmark; 100% category agreement on completed live LLM calls (with explicit disclosure of the E-09 supplier/part field-level miss).
   * Added comprehensive **Limitations** section acknowledging benchmark origin, lack of external messy text testing, and pricing retrieval date.

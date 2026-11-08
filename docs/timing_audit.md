@@ -52,7 +52,7 @@ elapsed = time.time() - t_start
 | **Tool Calls Executed** | **741 calls** | **783 calls** | Executed write operations. |
 | **Failed Tool Calls** | **0 calls** | **0 calls** | Zero policy violations. |
 | **Total Tokens** | **14,445 prompt / 751 output** | **0 prompt / 0 output** | Measured from `usageMetadata`. |
-| **Computed Cost** | **$0.009475** | **$0.000000** | Standard published rates ($0.50/1M in, $3.00/1M out). |
+| **Computed Cost** | **$0.033** | **$0.000000** | Standard published rates ($0.50/1M in, $3.00/1M out, including thinking tokens). |
 
 ---
 
@@ -139,9 +139,10 @@ Perception requests enforce structured JSON using the schema in `agents/llm_clie
 * **Pricing Reference:** Google AI Studio Published Pricing (`https://ai.google.dev/pricing`), retrieved 2026-11-07 (documented in `docs/pricing_source.md`):
   * Input tokens: **$0.50 / 1,000,000 tokens** ($0.0000005 per token)
   * Output tokens (including thinking tokens): **$3.00 / 1,000,000 tokens** ($0.000003 per token)
-* **Measured Token Counts Across 15 Events:**
-  * Input tokens: **14,445**
-  * Output tokens: **751**
-  * Total tokens: **15,196**
-* **Computed Commercial Cost per Full 15-Event Replay:**
-  $$\text{Cost} = (14{,}445 \times \$0.0000005) + (751 \times \$0.000003) = \$0.0072225 + \$0.002253 = \mathbf{\$0.0094755}\text{ (approx. }0.95\text{ cents)}$$
+* **Measured Token Counts Across Successful Live Calls:**
+  * Input (Prompt) tokens: **14,445**
+  * Candidate (Output) tokens: **751**
+  * Thought tokens: **7,715**
+  * Total billed tokens: **22,911**
+* **Computed Commercial Cost per Full 15-Event Replay (Method B - Including Thinking Tokens):**
+  $$\text{Cost} = (14{,}445 \times \$0.0000005) + ((751 + 7{,}715) \times \$0.000003) = \$0.0072225 + \$0.025398 = \mathbf{\$0.0326205}\text{ (approx. }\mathbf{\$0.033}\text{)}$$

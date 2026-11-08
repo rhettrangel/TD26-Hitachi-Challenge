@@ -127,8 +127,8 @@ All figures below trace directly to `runs/live_run/timing_summary.json`, `runs/c
 * **Token & Cost Accounting:**
   * Model String: `gemini-3-flash-preview`
   * Pricing: $0.50 / 1M input tokens, $3.00 / 1M output tokens (Source: Google AI Studio pricing, `https://ai.google.dev/pricing`, retrieved 2026-11-07).
-  * Measured Volume (15 events): 14,445 prompt tokens + 751 output tokens = 15,196 total tokens.
-  * Computed Commercial Cost per Full 15-Event Run: **$0.009475** (approx. 0.95 cents).
+  * Measured Volume (15 events): 14,445 prompt tokens + 751 output tokens (+ 7,715 thinking tokens) = 22,911 total billed tokens.
+  * Computed Commercial Cost per Full 15-Event Run: **$0.033** (computed as $(14{,}445 \times \$0.0000005) + ((751 + 7{,}715) \times \$0.000003) = \$0.03262$).
 
 ---
 

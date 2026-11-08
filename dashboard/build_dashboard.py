@@ -918,7 +918,7 @@ def generate_dashboard():
           <div style="font-weight: 700; color: #ffffff; margin-bottom: 4px;">Deliverables in Submission Package:</div>
           <ul style="padding-left: 20px; color: var(--text-muted);">
             <li><code>runs/cached_run/action_log.jsonl</code>: 783 logged deterministic tool calls (741 in live run).</li>
-            <li><code>docs/timing_audit.md</code>: Verified timing, token accounting, and latency breakdown.</li>
+            <li><code>docs/timing_audit.md</code>: Audited timing, token accounting, and latency breakdown.</li>
             <li><code>ontology_diagram.md</code> & <code>data/ontology.json</code>: Formal ontology schema & Mermaid diagrams.</li>
             <li><code>design_card.md</code>: One-page architectural breakdown.</li>
             <li><code>dashboard/index.html</code>: Enterprise Lumada Control Tower UI.</li>

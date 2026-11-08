@@ -1,0 +1,40 @@
+{
+  "run_mode": "live_gemini",
+  "model_name_string": "gemini-3-flash-preview",
+  "pricing_source": "Google AI Studio Pricing (https://ai.google.dev/pricing), retrieved 2026-11-07 ($0.50/1M in, $3.00/1M out)",
+  "total_wall_clock_seconds": 7.2871,
+  "total_llm_perception_seconds": 3.7398,
+  "total_deterministic_pipeline_seconds": 0.0027,
+  "total_action_execution_seconds": 0.0003,
+  "total_events_processed": 2,
+  "total_tool_calls_executed": 42,
+  "failed_tool_calls": 0,
+  "total_prompt_tokens": 1090,
+  "total_output_tokens": 62,
+  "total_tokens": 1152,
+  "computed_cost_usd": 0.000731,
+  "per_event_breakdown": [
+    {
+      "event_id": "E-05",
+      "category": "Noise",
+      "llm_perception_time_ms": 3449.1288661956787,
+      "deterministic_pipeline_time_ms": 0.2181529998779297,
+      "event_wall_time_ms": 3451.51,
+      "actions_executed": 0,
+      "prompt_tokens": 1090,
+      "output_tokens": 62,
+      "model_used": "gemini-3-flash-preview"
+    },
+    {
+      "event_id": "E-09",
+      "category": "Supplier Delay",
+      "llm_perception_time_ms": 290.68613052368164,
+      "deterministic_pipeline_time_ms": 2.4890899658203125,
+      "event_wall_time_ms": 3835.56,
+      "actions_executed": 42,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_used": "gemini-3-flash-preview"
+    }
+  ]
+}

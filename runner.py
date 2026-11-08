@@ -23,6 +23,7 @@ from typing import Any, Dict, List
 
 from agents.coordinator import CoordinatingAgent
 from enterprise import Enterprise
+import config
 
 
 class InstrumentedHttpClient:
@@ -87,15 +88,28 @@ def run_control_tower(
     out_dir: str,
     server_url: str = None,
     mode: str = "cached",
-    api_key: str = None
+    api_key: str = None,
+    event_filter: str = None
 ):
     os.makedirs(out_dir, exist_ok=True)
     action_log_path = os.path.join(out_dir, "action_log.jsonl")
     traces_path = os.path.join(out_dir, "event_traces.json")
     timing_path = os.path.join(out_dir, "timing_summary.json")
 
-    with open(events_path, encoding="utf-8") as f:
-        events = json.load(f)
+    if os.path.isfile(events_path):
+        with open(events_path, encoding="utf-8") as f:
+            events = json.load(f)
+    else:
+        # Treat events_path as comma-separated event ID filter
+        default_events_file = os.path.join(data_dir, "events.json") if os.path.exists(os.path.join(data_dir, "events.json")) else "data/events.json"
+        with open(default_events_file, encoding="utf-8") as f:
+            all_events = json.load(f)
+        filter_ids = {eid.strip() for eid in events_path.split(",") if eid.strip()}
+        events = [e for e in all_events if e.get("event_id") in filter_ids]
+
+    if event_filter:
+        filter_ids = {eid.strip() for eid in event_filter.split(",") if eid.strip()}
+        events = [e for e in events if e.get("event_id") in filter_ids]
 
     use_live_llm = (mode == "live")
     raw_out = os.path.join(out_dir, "raw") if use_live_llm else None
@@ -218,7 +232,8 @@ def run_control_tower(
 def main():
     parser = argparse.ArgumentParser(description="Multi-Agent Control Tower Runner")
     parser.add_argument("--data", default="data", help="Data directory containing CSVs")
-    parser.add_argument("--events", default="data/events.json", help="Path to events JSON")
+    parser.add_argument("--events", default="data/events.json", help="Path to events JSON or comma-separated event IDs (e.g. E-05,E-09)")
+    parser.add_argument("--event-filter", default=None, help="Comma-separated event IDs to run (optional)")
     parser.add_argument("--out", default="runs/submission", help="Output directory for action_log.jsonl")
     parser.add_argument("--server", default=None, help="HTTP URL of enterprise_server (optional)")
     parser.add_argument("--mode", choices=["live", "cached"], default="cached", help="Perception mode: 'live' (live Gemini API calls) or 'cached' (deterministic baseline)")
@@ -227,7 +242,7 @@ def main():
     args = parser.parse_args()
 
     mode = "live" if args.live_llm else args.mode
-    run_control_tower(args.data, args.events, args.out, args.server, mode, args.api_key)
+    run_control_tower(args.data, args.events, args.out, args.server, mode, args.api_key, event_filter=args.event_filter)
 
 
 if __name__ == "__main__":

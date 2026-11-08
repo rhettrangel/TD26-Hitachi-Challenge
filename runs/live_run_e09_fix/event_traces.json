@@ -1,0 +1,1218 @@
+[
+  {
+    "event_id": "E-05",
+    "category": "Noise",
+    "what_happened": "Non-operational message received.",
+    "impact_summary": "Event determined to be irrelevant noise; zero enterprise state modifications.",
+    "graph_paths": [
+      "None (No operational entities impacted)"
+    ],
+    "reasoning_trace": [
+      "Coordinator received event E-05 (news wire).",
+      "Perception parsed 1 operational incident(s) [Mode: gemini-3-flash-preview].",
+      "Knowledge graph semantic check: Event classified as Noise. Reason: Dealer Amarillo, TX asks where to find the new brochure PDF..",
+      "Policy rule 7 applied: Zero write actions taken on enterprise systems."
+    ],
+    "actions_taken": [],
+    "audit_trail": [],
+    "total_actions": 0,
+    "unconfirmed": false,
+    "is_noise": true,
+    "telemetry": {
+      "llm_perception_time_ms": 3449.13,
+      "deterministic_time_ms": 0.22,
+      "prompt_tokens": 1090,
+      "output_tokens": 62,
+      "model_name": "gemini-3-flash-preview"
+    }
+  },
+  {
+    "event_id": "E-09",
+    "category": "Supplier Delay",
+    "what_happened": "Supplier delay: Shipment SH-0256 of CAM-360 for plant P_AL delayed from 2027-03-29 to 2027-04-01.",
+    "impact_summary": "6 production orders halted at P_AL; 54 customer orders impacted across 26 dealers.",
+    "graph_paths": [
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0436) [2027-03-29] \u2192 CustomerOrder(CO-02567) \u2192 Dealer(D25) / Customer(C1467)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0436) [2027-03-29] \u2192 CustomerOrder(CO-02568) \u2192 Dealer(D25) / Customer(C0740)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0436) [2027-03-29] \u2192 CustomerOrder(CO-02569) \u2192 Dealer(D45) / Customer(C5203)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0436) [2027-03-29] \u2192 CustomerOrder(CO-02570) \u2192 Dealer(D25) / Customer(C5790)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0436) [2027-03-29] \u2192 CustomerOrder(CO-02571) \u2192 Dealer(D35) / Customer(C1703)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0436) [2027-03-29] \u2192 CustomerOrder(CO-02572) \u2192 Dealer(D02) / Customer(C1001)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0436) [2027-03-29] \u2192 CustomerOrder(CO-02573) \u2192 Dealer(D46) / Customer(C5789)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0436) [2027-03-29] \u2192 CustomerOrder(CO-02574) \u2192 Dealer(D47) / Customer(C4375)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02584) \u2192 Dealer(D21) / Customer(C1513)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02585) \u2192 Dealer(D38) / Customer(C1011)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02586) \u2192 Dealer(D35) / Customer(C6543)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02587) \u2192 Dealer(D31) / Customer(C6144)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02588) \u2192 Dealer(D36) / Customer(C6413)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02589) \u2192 Dealer(D08) / Customer(C4525)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02590) \u2192 Dealer(D08) / Customer(C1928)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02591) \u2192 Dealer(D25) / Customer(C6457)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0438) [2027-03-29] \u2192 CustomerOrder(CO-02592) \u2192 Dealer(D24) / Customer(C1939)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02593) \u2192 Dealer(D26) / Customer(C3575)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02594) \u2192 Dealer(D23) / Customer(C2559)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02595) \u2192 Dealer(D44) / Customer(C5324)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02596) \u2192 Dealer(D03) / Customer(C2859)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02597) \u2192 Dealer(D08) / Customer(C0709)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02598) \u2192 Dealer(D44) / Customer(C4530)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02599) \u2192 Dealer(D47) / Customer(C0527)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02600) \u2192 Dealer(D25) / Customer(C6205)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02601) \u2192 Dealer(D20) / Customer(C0458)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0439) [2027-03-30] \u2192 CustomerOrder(CO-02602) \u2192 Dealer(D16) / Customer(C4699)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0441) [2027-03-30] \u2192 CustomerOrder(CO-02613) \u2192 Dealer(D46) / Customer(C3192)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0441) [2027-03-30] \u2192 CustomerOrder(CO-02614) \u2192 Dealer(D26) / Customer(C3356)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0441) [2027-03-30] \u2192 CustomerOrder(CO-02615) \u2192 Dealer(D27) / Customer(C1676)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0441) [2027-03-30] \u2192 CustomerOrder(CO-02616) \u2192 Dealer(D44) / Customer(C2641)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0441) [2027-03-30] \u2192 CustomerOrder(CO-02617) \u2192 Dealer(D34) / Customer(C1223)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0441) [2027-03-30] \u2192 CustomerOrder(CO-02618) \u2192 Dealer(D25) / Customer(C4679)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0441) [2027-03-30] \u2192 CustomerOrder(CO-02619) \u2192 Dealer(D20) / Customer(C5355)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0441) [2027-03-30] \u2192 CustomerOrder(CO-02620) \u2192 Dealer(D06) / Customer(C4959)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02621) \u2192 Dealer(D50) / Customer(C2028)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02622) \u2192 Dealer(D06) / Customer(C0792)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02623) \u2192 Dealer(D08) / Customer(C0997)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02624) \u2192 Dealer(D15) / Customer(C0918)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02625) \u2192 Dealer(D08) / Customer(C4317)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02626) \u2192 Dealer(D46) / Customer(C0448)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02627) \u2192 Dealer(D47) / Customer(C5928)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02628) \u2192 Dealer(D04) / Customer(C6557)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(SUMMIT) [BOM] \u2192 ProductionOrder(PO-0442) [2027-03-31] \u2192 CustomerOrder(CO-02629) \u2192 Dealer(D12) / Customer(C5629)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02640) \u2192 Dealer(D16) / Customer(C3035)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02641) \u2192 Dealer(D34) / Customer(C5173)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02642) \u2192 Dealer(D23) / Customer(C0378)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02643) \u2192 Dealer(D04) / Customer(C6843)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02644) \u2192 Dealer(D25) / Customer(C5679)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02645) \u2192 Dealer(D44) / Customer(C5310)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02646) \u2192 Dealer(D12) / Customer(C2019)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02647) \u2192 Dealer(D30) / Customer(C6616)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02648) \u2192 Dealer(D50) / Customer(C4305)",
+      "Shipment(SH-0256) \u2192 Part(CAM-360) \u2192 Model(VOYAGER) [BOM] \u2192 ProductionOrder(PO-0444) [2027-03-31] \u2192 CustomerOrder(CO-02649) \u2192 Dealer(D08) / Customer(C5335)"
+    ],
+    "reasoning_trace": [
+      "Coordinator received event E-09 (supplier email).",
+      "Perception parsed 1 operational incident(s) [Mode: gemini-3-flash-preview].",
+      "Identified inbound shipment SH-0256 delayed from 2027-03-29 to 2027-04-01.",
+      "Part CAM-360 (surround-view camera kit) is required in BOM of models: SUMMIT, VOYAGER.",
+      "Found 6 production orders at P_AL between 2027-03-29 and 2027-04-01 requiring CAM-360."
+    ],
+    "actions_taken": [
+      {
+        "tool": "mes.reschedule",
+        "args": {
+          "production_order_id": "PO-0436",
+          "new_date": "2027-04-01"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "production_order_id": "PO-0436",
+          "plant_id": "P_AL",
+          "date": "2027-04-01"
+        },
+        "agent": "MESPlannerSpecialist"
+      },
+      {
+        "tool": "mes.reschedule",
+        "args": {
+          "production_order_id": "PO-0438",
+          "new_date": "2027-04-01"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "production_order_id": "PO-0438",
+          "plant_id": "P_AL",
+          "date": "2027-04-01"
+        },
+        "agent": "MESPlannerSpecialist"
+      },
+      {
+        "tool": "mes.reschedule",
+        "args": {
+          "production_order_id": "PO-0439",
+          "new_date": "2027-04-02"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "production_order_id": "PO-0439",
+          "plant_id": "P_AL",
+          "date": "2027-04-02"
+        },
+        "agent": "MESPlannerSpecialist"
+      },
+      {
+        "tool": "mes.reschedule",
+        "args": {
+          "production_order_id": "PO-0441",
+          "new_date": "2027-04-02"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "production_order_id": "PO-0441",
+          "plant_id": "P_AL",
+          "date": "2027-04-02"
+        },
+        "agent": "MESPlannerSpecialist"
+      },
+      {
+        "tool": "mes.transfer",
+        "args": {
+          "production_order_id": "PO-0442",
+          "to_plant_id": "P_TX",
+          "new_date": "2027-04-01"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "production_order_id": "PO-0442",
+          "plant_id": "P_TX",
+          "date": "2027-04-01"
+        },
+        "agent": "MESPlannerSpecialist"
+      },
+      {
+        "tool": "mes.transfer",
+        "args": {
+          "production_order_id": "PO-0444",
+          "to_plant_id": "P_KY",
+          "new_date": "2027-04-01"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "production_order_id": "PO-0444",
+          "plant_id": "P_KY",
+          "date": "2027-04-01"
+        },
+        "agent": "MESPlannerSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D02",
+          "customer_order_ids": [
+            "CO-02572"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02572"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D03",
+          "customer_order_ids": [
+            "CO-02596"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02596"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D04",
+          "customer_order_ids": [
+            "CO-02628",
+            "CO-02643"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02628, CO-02643"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D06",
+          "customer_order_ids": [
+            "CO-02620",
+            "CO-02622"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02620, CO-02622"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D08",
+          "customer_order_ids": [
+            "CO-02589",
+            "CO-02590",
+            "CO-02597",
+            "CO-02623",
+            "CO-02625",
+            "CO-02649"
+          ],
+          "message": "Operational notification: 6 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02589, CO-02590, CO-02597, CO-02623, CO-02625, CO-02649"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D12",
+          "customer_order_ids": [
+            "CO-02629",
+            "CO-02646"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02629, CO-02646"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D15",
+          "customer_order_ids": [
+            "CO-02624"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02624"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D16",
+          "customer_order_ids": [
+            "CO-02602",
+            "CO-02640"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02602, CO-02640"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D20",
+          "customer_order_ids": [
+            "CO-02601",
+            "CO-02619"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02601, CO-02619"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D21",
+          "customer_order_ids": [
+            "CO-02584"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02584"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D23",
+          "customer_order_ids": [
+            "CO-02594",
+            "CO-02642"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02594, CO-02642"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D24",
+          "customer_order_ids": [
+            "CO-02592"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02592"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D25",
+          "customer_order_ids": [
+            "CO-02567",
+            "CO-02568",
+            "CO-02570",
+            "CO-02591",
+            "CO-02600",
+            "CO-02618",
+            "CO-02644"
+          ],
+          "message": "Operational notification: 7 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02567, CO-02568, CO-02570, CO-02591, CO-02600, CO-02618, CO-02644"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D26",
+          "customer_order_ids": [
+            "CO-02593",
+            "CO-02614"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02593, CO-02614"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D27",
+          "customer_order_ids": [
+            "CO-02615"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02615"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D30",
+          "customer_order_ids": [
+            "CO-02647"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02647"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D31",
+          "customer_order_ids": [
+            "CO-02587"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02587"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D34",
+          "customer_order_ids": [
+            "CO-02617",
+            "CO-02641"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02617, CO-02641"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D35",
+          "customer_order_ids": [
+            "CO-02571",
+            "CO-02586"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02571, CO-02586"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D36",
+          "customer_order_ids": [
+            "CO-02588"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02588"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D38",
+          "customer_order_ids": [
+            "CO-02585"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02585"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D44",
+          "customer_order_ids": [
+            "CO-02595",
+            "CO-02598",
+            "CO-02616",
+            "CO-02645"
+          ],
+          "message": "Operational notification: 4 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02595, CO-02598, CO-02616, CO-02645"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D45",
+          "customer_order_ids": [
+            "CO-02569"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02569"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D46",
+          "customer_order_ids": [
+            "CO-02573",
+            "CO-02613",
+            "CO-02626"
+          ],
+          "message": "Operational notification: 3 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02573, CO-02613, CO-02626"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D47",
+          "customer_order_ids": [
+            "CO-02574",
+            "CO-02599",
+            "CO-02627"
+          ],
+          "message": "Operational notification: 3 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02574, CO-02599, CO-02627"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D50",
+          "customer_order_ids": [
+            "CO-02621",
+            "CO-02648"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02621, CO-02648"
+        },
+        "ok": true,
+        "result": {
+          "ok": true
+        },
+        "agent": "DealerNetworkSpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02570"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D25"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02593"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D26"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02640"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D16"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02645"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D44"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02590"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D08"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02587"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D31"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02628"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D04"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02598"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D44"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02615"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D27"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      },
+      {
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02641"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "dealer_id": "D34"
+        },
+        "agent": "CustomerCareQualitySpecialist"
+      }
+    ],
+    "audit_trail": [
+      {
+        "event_id": "E-09",
+        "tool": "mes.reschedule",
+        "args": {
+          "production_order_id": "PO-0436",
+          "new_date": "2027-04-01"
+        },
+        "reasoning": "Rescheduled PO-0436 at P_AL to earliest feasible slot on 2027-04-01."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "mes.reschedule",
+        "args": {
+          "production_order_id": "PO-0438",
+          "new_date": "2027-04-01"
+        },
+        "reasoning": "Rescheduled PO-0438 at P_AL to earliest feasible slot on 2027-04-01."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "mes.reschedule",
+        "args": {
+          "production_order_id": "PO-0439",
+          "new_date": "2027-04-02"
+        },
+        "reasoning": "Rescheduled PO-0439 at P_AL to earliest feasible slot on 2027-04-02."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "mes.reschedule",
+        "args": {
+          "production_order_id": "PO-0441",
+          "new_date": "2027-04-02"
+        },
+        "reasoning": "Rescheduled PO-0441 at P_AL to earliest feasible slot on 2027-04-02."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "mes.transfer",
+        "args": {
+          "production_order_id": "PO-0442",
+          "to_plant_id": "P_TX",
+          "new_date": "2027-04-01"
+        },
+        "reasoning": "Same plant P_AL at capacity; transferred PO-0442 (SUMMIT) to P_TX on 2027-04-01."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "mes.transfer",
+        "args": {
+          "production_order_id": "PO-0444",
+          "to_plant_id": "P_KY",
+          "new_date": "2027-04-01"
+        },
+        "reasoning": "Same plant P_AL at capacity; transferred PO-0444 (VOYAGER) to P_KY on 2027-04-01."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D02",
+          "customer_order_ids": [
+            "CO-02572"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02572"
+        },
+        "reasoning": "Notifying dealer D02 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D03",
+          "customer_order_ids": [
+            "CO-02596"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02596"
+        },
+        "reasoning": "Notifying dealer D03 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D04",
+          "customer_order_ids": [
+            "CO-02628",
+            "CO-02643"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02628, CO-02643"
+        },
+        "reasoning": "Notifying dealer D04 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D06",
+          "customer_order_ids": [
+            "CO-02620",
+            "CO-02622"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02620, CO-02622"
+        },
+        "reasoning": "Notifying dealer D06 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D08",
+          "customer_order_ids": [
+            "CO-02589",
+            "CO-02590",
+            "CO-02597",
+            "CO-02623",
+            "CO-02625",
+            "CO-02649"
+          ],
+          "message": "Operational notification: 6 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02589, CO-02590, CO-02597, CO-02623, CO-02625, CO-02649"
+        },
+        "reasoning": "Notifying dealer D08 of 6 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D12",
+          "customer_order_ids": [
+            "CO-02629",
+            "CO-02646"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02629, CO-02646"
+        },
+        "reasoning": "Notifying dealer D12 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D15",
+          "customer_order_ids": [
+            "CO-02624"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02624"
+        },
+        "reasoning": "Notifying dealer D15 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D16",
+          "customer_order_ids": [
+            "CO-02602",
+            "CO-02640"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02602, CO-02640"
+        },
+        "reasoning": "Notifying dealer D16 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D20",
+          "customer_order_ids": [
+            "CO-02601",
+            "CO-02619"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02601, CO-02619"
+        },
+        "reasoning": "Notifying dealer D20 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D21",
+          "customer_order_ids": [
+            "CO-02584"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02584"
+        },
+        "reasoning": "Notifying dealer D21 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D23",
+          "customer_order_ids": [
+            "CO-02594",
+            "CO-02642"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02594, CO-02642"
+        },
+        "reasoning": "Notifying dealer D23 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D24",
+          "customer_order_ids": [
+            "CO-02592"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02592"
+        },
+        "reasoning": "Notifying dealer D24 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D25",
+          "customer_order_ids": [
+            "CO-02567",
+            "CO-02568",
+            "CO-02570",
+            "CO-02591",
+            "CO-02600",
+            "CO-02618",
+            "CO-02644"
+          ],
+          "message": "Operational notification: 7 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02567, CO-02568, CO-02570, CO-02591, CO-02600, CO-02618, CO-02644"
+        },
+        "reasoning": "Notifying dealer D25 of 7 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D26",
+          "customer_order_ids": [
+            "CO-02593",
+            "CO-02614"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02593, CO-02614"
+        },
+        "reasoning": "Notifying dealer D26 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D27",
+          "customer_order_ids": [
+            "CO-02615"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02615"
+        },
+        "reasoning": "Notifying dealer D27 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D30",
+          "customer_order_ids": [
+            "CO-02647"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02647"
+        },
+        "reasoning": "Notifying dealer D30 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D31",
+          "customer_order_ids": [
+            "CO-02587"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02587"
+        },
+        "reasoning": "Notifying dealer D31 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D34",
+          "customer_order_ids": [
+            "CO-02617",
+            "CO-02641"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02617, CO-02641"
+        },
+        "reasoning": "Notifying dealer D34 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D35",
+          "customer_order_ids": [
+            "CO-02571",
+            "CO-02586"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02571, CO-02586"
+        },
+        "reasoning": "Notifying dealer D35 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D36",
+          "customer_order_ids": [
+            "CO-02588"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02588"
+        },
+        "reasoning": "Notifying dealer D36 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D38",
+          "customer_order_ids": [
+            "CO-02585"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02585"
+        },
+        "reasoning": "Notifying dealer D38 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D44",
+          "customer_order_ids": [
+            "CO-02595",
+            "CO-02598",
+            "CO-02616",
+            "CO-02645"
+          ],
+          "message": "Operational notification: 4 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02595, CO-02598, CO-02616, CO-02645"
+        },
+        "reasoning": "Notifying dealer D44 of 4 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D45",
+          "customer_order_ids": [
+            "CO-02569"
+          ],
+          "message": "Operational notification: 1 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02569"
+        },
+        "reasoning": "Notifying dealer D45 of 1 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D46",
+          "customer_order_ids": [
+            "CO-02573",
+            "CO-02613",
+            "CO-02626"
+          ],
+          "message": "Operational notification: 3 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02573, CO-02613, CO-02626"
+        },
+        "reasoning": "Notifying dealer D46 of 3 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D47",
+          "customer_order_ids": [
+            "CO-02574",
+            "CO-02599",
+            "CO-02627"
+          ],
+          "message": "Operational notification: 3 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02574, CO-02599, CO-02627"
+        },
+        "reasoning": "Notifying dealer D47 of 3 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "dealer.notify",
+        "args": {
+          "dealer_id": "D50",
+          "customer_order_ids": [
+            "CO-02621",
+            "CO-02648"
+          ],
+          "message": "Operational notification: 2 customer order(s) affected due to supplier delivery delay. Affected IDs: CO-02621, CO-02648"
+        },
+        "reasoning": "Notifying dealer D50 of 2 delayed customer orders."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02570"
+        },
+        "reasoning": "Assigned loaner from D25 pool to Platinum customer C5790 for order CO-02570 (remaining pool: 0)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02593"
+        },
+        "reasoning": "Assigned loaner from D26 pool to Platinum customer C3575 for order CO-02593 (remaining pool: 1)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02640"
+        },
+        "reasoning": "Assigned loaner from D16 pool to Platinum customer C3035 for order CO-02640 (remaining pool: 2)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02645"
+        },
+        "reasoning": "Assigned loaner from D44 pool to Platinum customer C5310 for order CO-02645 (remaining pool: 1)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02590"
+        },
+        "reasoning": "Assigned loaner from D08 pool to Gold customer C1928 for order CO-02590 (remaining pool: 2)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02587"
+        },
+        "reasoning": "Assigned loaner from D31 pool to Gold customer C6144 for order CO-02587 (remaining pool: 1)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02628"
+        },
+        "reasoning": "Assigned loaner from D04 pool to Gold customer C6557 for order CO-02628 (remaining pool: 0)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02598"
+        },
+        "reasoning": "Assigned loaner from D44 pool to Gold customer C4530 for order CO-02598 (remaining pool: 0)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02615"
+        },
+        "reasoning": "Assigned loaner from D27 pool to Gold customer C1676 for order CO-02615 (remaining pool: 0)."
+      },
+      {
+        "event_id": "E-09",
+        "tool": "crm.assign_loaner",
+        "args": {
+          "customer_order_id": "CO-02641"
+        },
+        "reasoning": "Assigned loaner from D34 pool to Gold customer C5173 for order CO-02641 (remaining pool: 0)."
+      }
+    ],
+    "total_actions": 42,
+    "unconfirmed": false,
+    "is_noise": false,
+    "telemetry": {
+      "llm_perception_time_ms": 290.69,
+      "deterministic_time_ms": 2.49,
+      "prompt_tokens": 0,
+      "output_tokens": 0,
+      "model_name": "gemini-3-flash-preview"
+    }
+  }
+]

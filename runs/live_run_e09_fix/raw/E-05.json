@@ -1,0 +1,51 @@
+{
+  "event_id": "E-05",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 3449.13,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1090,
+    "candidatesTokenCount": 62,
+    "totalTokenCount": 1722
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\n  \"incidents\": [\n    {\n      \"category\": \"Noise\",\n      \"supplier_id\": \"\",\n      \"part_id\": \"\",\n      \"reason\": \"Dealer Amarillo, TX asks where to find the new brochure PDF.\"\n    }\n  ]\n}",
+              "thoughtSignature": "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"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1090,
+      "candidatesTokenCount": 62,
+      "totalTokenCount": 1722,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1090
+        }
+      ],
+      "thoughtsTokenCount": 570,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "uRjwavjdOsiMqtsPmpLR4Ag"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Noise",
+      "supplier_id": "",
+      "part_id": "",
+      "reason": "Dealer Amarillo, TX asks where to find the new brochure PDF."
+    }
+  ]
+}

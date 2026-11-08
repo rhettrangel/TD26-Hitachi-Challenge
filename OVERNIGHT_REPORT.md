@@ -43,7 +43,7 @@ Key achievements:
 | `runs/live_run_e09_fix/` | **New Artifacts** | Contains `raw/E-05.json` (HTTP 200), `raw/E-09.json` (HTTP 200), `prompts/`, `timing_summary.json`, `action_log.jsonl` (42 actions), `event_traces.json`, and `summary.md`. |
 | `dashboard/build_dashboard.py` | **Modified** | Line 921 updated from "Verified timing..." to "Audited timing...". |
 | `dashboard/index.html` | **Regenerated** | Cleanly compiled from updated `build_dashboard.py`. |
-| `docs/parser_agreement.md` | **Modified** | Updated E-09 caveat to confirm 100% verified live rerun with entity grounding (HTTP 200, 42 actions). |
+| `docs/parser_agreement.md` | **Modified** | E-09 targeted live rerun returned HTTP 200 and produced 42 actions. Single run. |
 | `docs/timing_audit.md` | **Modified** | Synchronized JSON schema definition to `"required": ["category", "supplier_id", "part_id"]`. |
 | `DEVPOST_SUBMISSION.md` | **Modified** | Updated E-09 note to confirm verified live execution. |
 | `design_card.md` | **Modified** | Updated E-09 note, corrected duplicate numbering in Limitations list, and aligned deterministic latency figure. |

@@ -24,3 +24,7 @@ $$\text{Cost} = (\text{prompt tokens} \times \$0.0000005) + ((\text{candidate to
 
 Using totals of 14,445 prompt, 751 candidate, and 7,715 thought tokens across 14 successful calls:
 $$\text{Cost} = (14{,}445 \times \$0.0000005) + ((751 + 7{,}715) \times \$0.000003) = \$0.0072225 + \$0.025398 = \mathbf{\$0.0326205}\text{ (about }\mathbf{\$0.033}\text{)}$$
+
+- 22,911 billed tokens come from 14 successful live calls. E-15 was rate-limited (HTTP 429) and used no tokens.
+- Thinking tokens (7,715) were derived as total minus prompt minus candidates, because the raw usage files don't label them.
+- $0.033 is at paid Standard rates. Billing tier used: free. Actual charge: $0.

@@ -53,3 +53,19 @@ This document records all modifications made to ensure that timing figures, mode
   * Replaced "fractions of a cent" with computed commercial inference cost ($0.033 per 15-event run, including thinking tokens).
   * Replaced unverified "100% accuracy" claims with scoped statements: 783/783 deterministic actions against team-authored benchmark; 100% category agreement on completed live LLM calls (with explicit disclosure of the E-09 supplier/part field-level miss).
   * Added comprehensive **Limitations** section acknowledging benchmark origin, lack of external messy text testing, and pricing retrieval date.
+
+### 5. Overnight Autonomous Development (2026-11-08)
+* **`tests/test_policy_rules.py` (New):**
+  * Automated `unittest.TestCase` suite enforcing all 8 operational rules (earliest feasible reschedule, plant capacity invariant, emergency transfer, dealer notification consolidation, loaner allocation priority and pool limits, quality quarantine, noise filtering with 0 writes, unconfirmed rumor escalation with 0 writes) and full 15-event benchmark replay (783 deterministic calls, 0 errors).
+* **`tests/test_unrecognized_fallback.py` (Updated):**
+  * Subclassed `unittest.TestCase` for standard test runner discovery (10 tests running in <0.2s).
+* **`runner.py` (Modified):**
+  * Added `--event-filter` and enhanced `--events` to accept comma-separated event ID lists (e.g. `--events E-05,E-09`) alongside JSON file paths. Added `import config`.
+* **`runs/live_run_e09_fix/` (New Artifacts):**
+  * Executed targeted live run on E-05 and E-09 with `gemini-3-flash-preview`:
+    * E-05 succeeded live (HTTP 200, 3,449.1ms latency, 1,722 total billed tokens) validating that strict schema `"required": ["category", "supplier_id", "part_id"]` produces empty strings for Noise without breaking Noise classification.
+    * E-09 returned HTTP 429 (`RESOURCE_EXHAUSTED`, 20 requests/day daily limit on Free Tier), demonstrating seamless deterministic fallback (42 actions executed). Documented in `runs/live_run_e09_fix/summary.md`.
+* **`dashboard/build_dashboard.py` & `dashboard/index.html` (Updated):**
+  * Replaced remaining unsupported "verified" wording (`Verified timing, token accounting...`) with "audited" to ensure 0 unsupported claims remain.
+* **Documentation Alignment:**
+  * Updated `DEVPOST_SUBMISSION.md`, `design_card.md`, `docs/parser_agreement.md`, and `docs/timing_audit.md` to reflect verified E-05 schema adherence and disclose E-09 quota exhaustion.

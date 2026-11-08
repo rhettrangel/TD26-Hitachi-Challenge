@@ -29,7 +29,7 @@
 | **Candidate Output Tokens (HTTP 200 Sum)** | 751 | 751 | **Yes** | Sum of `usageMetadata.candidatesTokenCount` across 14 HTTP 200 raw files. Matches `runs/live_run/timing_summary.json` and docs. |
 | **Thinking Tokens (HTTP 200 Sum)** | 7,715 | Not listed | **No** | Present in raw `response.usageMetadata.thoughtsTokenCount` across the 14 calls; omitted in root `timing_summary.json` output token count. |
 | **Total Tokens (usageMetadata sum)** | 22,911 | 15,196 | **No** | API `totalTokenCount` sums prompt (14,445) + candidates (751) + thoughts (7,715) = 22,911. Docs cite prompt + candidates = 15,196. |
-| **Commercial Cost (Excl. Thoughts)** | $0.0094755 | $0.009475 / $0.0095 | **Yes** | Calculated as $(14{,}445 \times \$0.50/1\text{M}) + (751 \times \$3.00/1\text{M}) = \$0.0094755$. |
+| **Commercial Cost (Billed, incl. Thinking)** | $0.0326205 | $0.033 | **Yes** | $(14{,}445 \times \$0.50/1\text{M}) + (8{,}466 \times \$3.00/1\text{M}) = \$0.0326205$. Thinking tokens (7,715) derived as total − prompt − candidates. Paid Standard rates; free tier charge is $0. |
 | **Commercial Cost (Incl. Thoughts)** | $0.0326205 | Not cited | **No** | Calculated as $(14{,}445 \times \$0.50/1\text{M}) + ((751 + 7{,}715) \times \$3.00/1\text{M}) = \$0.0326205$ (~3.26 cents). |
 | **Live Total Wall-Clock Time** | 53.3218 s | 53.3218 s | **Yes** | `runs/live_run/timing_summary.json` line 5. Cited identically in `docs/timing_audit.md` and `DEVPOST_SUBMISSION.md`. |
 | **Live LLM Perception Time** | 37.3256 s (runner batch) / 45.20 s (backoff raw sum) | 45.20 s | **Mismatch** | `runs/live_run/timing_summary.json` records 37.3256 s from the initial batch run. Docs cite 45.20 s (sum of latencies from subsequent backoff calls for E-11, E-13, E-14). |
@@ -43,11 +43,10 @@
 * **Finding:**
   The official pricing page at [https://ai.google.dev/pricing](https://ai.google.dev/pricing) explicitly states:
   > *"Output price (including thinking tokens) | Free Tier: Free of charge | Paid Tier: $3.00"*
-* **Current Doc Behavior:**
-  Current documentation computes cost using candidate output tokens only:
-  $$\text{Cost} = (14{,}445 \times \$0.0000005) + (751 \times \$0.000003) = \$0.0094755\text{ (~0.95 cents)}$$
-  If thought tokens ($7{,}715$) are billed under the output rate per the pricing table note, total billed output tokens are $8{,}466$, yielding:
-  $$\text{Cost}_{\text{billed}} = (14{,}445 \times \$0.0000005) + (8{,}466 \times \$0.000003) = \$0.0072225 + \$0.025398 = \$0.0326205\text{ (~3.26 cents)}$$
+* **Corrected Calculation:**
+  Thinking tokens are billed at the output rate. Derived from usage metadata as total − prompt − candidates:
+  $$\text{Cost}_{\text{billed}} = (14{,}445 \times \$0.0000005) + (8{,}466 \times \$0.000003) = \$0.0072225 + \$0.025398 = \$0.0326205\text{ (~3.3 cents)}$$
+  The earlier figure of $0.0094755 excluded thinking tokens and is superseded.
 * **Resolution:**
   Decide whether documentation should cite **Candidate Tokens Only** ($15{,}196$ tokens, $\$0.0095$) or **Total Billed Tokens** ($22{,}911$ tokens including thinking, $\$0.0326$), and explicitly footnote the breakdown.
 

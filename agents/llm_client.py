@@ -46,7 +46,9 @@ PERCEPTION_JSON_SCHEMA = {
                     "min_reschedule_date": {"type": "STRING"},
                     "reason": {"type": "STRING"}
                 },
-                "required": ["category"]
+                # Note: "required" applies to all incident categories. For Noise and Unconfirmed Report events,
+                # set supplier_id and part_id to empty strings ("").
+                "required": ["category", "supplier_id", "part_id"]
             }
         }
     },
@@ -120,7 +122,9 @@ class GeminiPerceptionClient:
             f"Important date rules for schema fields:\n"
             f"- For Plant Outage: provide start_date and end_date (e.g. 'next Friday through Monday Mar 22' -> start_date '2027-03-19', end_date '2027-03-22').\n"
             f"- For Supplier Delay: start_date is original ETA, end_date is new ETA (e.g. 'next Monday' to 'next Friday' -> start_date '2027-03-15', end_date '2027-03-19').\n"
+            f"- For Supplier Delay incidents, you must extract supplier_id (for example SUP-09 or the supplier's name) and part_id (for example CAM-360) from the message. Copy identifiers exactly as they appear in the message. Do not omit them.\n"
             f"- For Quality Hold: start_date is build range start, end_date is build range end (e.g. 'Thursday Feb 25 through last Monday' -> start_date '2027-02-25', end_date '2027-03-01').\n"
+            f"- For Noise and Unconfirmed Report events, set supplier_id and part_id to empty strings.\n"
             f"Company Entity Aliases:\n{aliases_context}\n\n"
             f"Event [{event_id}]: {text}\n\n"
             f"Classify into category (Supplier Delay, Plant Outage, Quality Hold, Noise, Unconfirmed Report).\n"

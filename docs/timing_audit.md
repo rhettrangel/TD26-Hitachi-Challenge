@@ -89,7 +89,7 @@ Perception requests enforce structured JSON using the schema in `agents/llm_clie
           "min_reschedule_date": {"type": "STRING"},
           "reason": {"type": "STRING"}
         },
-        "required": ["category"]
+        "required": ["category", "supplier_id", "part_id"]
       }
     }
   },

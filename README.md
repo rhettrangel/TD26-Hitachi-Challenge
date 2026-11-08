@@ -13,6 +13,7 @@ An autonomous, **neuro-symbolic multi-agent operations control tower** engineere
 
 ## 🚀 Live Demo & Visuals
 
+- **2-Minute Demo Video:** [Watch on YouTube](https://www.youtube.com/watch?v=nwJWi1T06o0)
 - **Executive Industrial Dashboard:** Open [`dashboard/index.html`](dashboard/index.html) in any browser (zero web dependencies, self-contained standard HTML5/CSS/JS).
 - **Architecture & System Design:** See [`design_card.md`](design_card.md) and [`ontology_diagram.md`](ontology_diagram.md).
 - **Submission Narrative:** See [`DEVPOST_SUBMISSION.md`](DEVPOST_SUBMISSION.md).

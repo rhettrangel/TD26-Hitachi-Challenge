@@ -121,7 +121,7 @@ All figures below trace directly to `runs/live_run/timing_summary.json`, `runs/c
 * **Event Set:** 15 benchmark events (`data/events.json`).
 * **Deterministic Policy Replay:** **783 / 783 valid tool calls (0 errors)** in the deterministic baseline on the 15 team-authored ground-truth events (741 tool calls executed in the live run due to E-09 omitting supplier/part fields and E-15 hitting daily API rate limits).
 * **Timing Breakdown:**
-  * **Live Gemini Run (`runs/live_run/`):** 53.32s wall-clock time (45.20s LLM round-trip perception time, 0.052s deterministic planning, 0.009s state execution).
+  * **Live Gemini Run (`runs/live_run/`):** 53.32s wall-clock time (37.33s LLM round-trip perception time summed from `runs/live_run/timing_summary.json`, 0.052s deterministic planning, 0.009s state execution).
   * **Deterministic Baseline (`runs/cached_run/`):** 0.0357s wall-clock time (deterministic only, zero LLM calls, zero network calls).
 * **Parser Agreement:** 14 of 14 completed live calls (100%) agreed with the deterministic baseline on incident category (Outage, Delay, Quality Hold, Noise, Unconfirmed Report). *Caveat on field-level extraction:* On event E-09, the live LLM classified the category as Supplier Delay and extracted dates/plant, but missed the supplier ID and part number, resulting in 0 live rebalancing actions vs 42 in the deterministic baseline. 1 call (E-15) hit API rate limits and fell back to deterministic parsing.
 * **Token & Cost Accounting:**

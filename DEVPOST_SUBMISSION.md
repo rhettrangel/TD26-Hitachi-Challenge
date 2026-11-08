@@ -49,7 +49,7 @@ All metrics trace directly to `runs/live_run/timing_summary.json`, `runs/cached_
   * Deterministic Layer: **783 / 783 tool calls executed with 0 errors** in the deterministic baseline against the enterprise simulator (`runs/cached_run/action_log.jsonl`), whereas the live run executed 741 tool calls (`runs/live_run/action_log.jsonl`).
   * LLM Perception Agreement: **14 of 14 completed live calls (100%)** agreed on event category with the deterministic baseline parser. *Caveat on field-level extraction:* In event E-09, the live LLM classified the category as Supplier Delay but omitted the supplier ID and part number strings from text, resulting in 0 actions taken in live mode versus 42 actions in deterministic mode. 1 call (E-15) encountered Free Tier daily API rate limits and fell back to the deterministic path cleanly.
 * **Timing Breakdown:**
-  * **Live Gemini Run (`runs/live_run/`):** **53.3218 s** total wall-clock time (45.20s LLM round-trip perception time, 0.0523s deterministic pipeline, 0.0087s action execution).
+  * **Live Gemini Run (`runs/live_run/`):** **53.3218 s** total wall-clock time (37.33s LLM round-trip perception time summed from `runs/live_run/timing_summary.json`, 0.0523s deterministic pipeline, 0.0087s action execution).
   * **Deterministic Baseline (`runs/cached_run/`):** **0.0357 s** total wall-clock time (deterministic only, no LLM calls, no network).
 * **Model Attribution:** `gemini-3-flash-preview` (Perception) + Deterministic Policy Engine.
 * **Computed Commercial Efficiency & Cost:**
@@ -63,7 +63,7 @@ All metrics trace directly to `runs/live_run/timing_summary.json`, `runs/cached_
 
 1. **Benchmark Scope:** The 15 test events were hand-written by the team; the ground truth was built by the same team.
 2. **Perception Generalization:** LLM perception accuracy on messy real-world text outside the 15 team-authored events has not been measured independently.
-3. **Latency Benchmarking:** The 0.0357s figure represents local in-memory deterministic processing only. Real API calls are subject to external network latency (45.20s total across live calls).
+3. **Latency Benchmarking:** The 0.0357s figure represents local in-memory deterministic processing only. Real API calls are subject to external network latency (37.33s total LLM perception time summed from `runs/live_run/timing_summary.json`).
 4. **Pricing Citation:** Commercial pricing rates were retrieved from Google AI Studio on 2026-11-07 ($0.50/1M input, $3.00/1M output).
 
 ---

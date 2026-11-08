@@ -46,7 +46,7 @@ elapsed = time.time() - t_start
 | :--- | :--- | :--- | :--- |
 | **Model Used** | `gemini-3-flash-preview` | `deterministic_rule_engine` | Model string called by coordinator. |
 | **Total Wall-Clock Time** | **53.3218 s** | **0.0357 s** | Total time across all 15 events. |
-| **LLM Perception Time** | **45.20 s** (sum across calls) | **0.0000 s** | Real API round-trip latency. |
+| **LLM Perception Time** | **37.33 s** (Summed from `runs/live_run/timing_summary.json`) | **0.0000 s** | Real API round-trip latency. |
 | **Deterministic Pipeline Time** | **0.0523 s** | **0.0314 s** | Graph traversal + policy solving. |
 | **Action Execution Time** | **0.0087 s** | **0.0042 s** | In-memory simulator action dispatch. |
 | **Tool Calls Executed** | **741 calls** (live run: E-15 failed with HTTP 429 and E-09 produced 0 live actions) | **783 calls** (deterministic baseline) | Executed write operations. |

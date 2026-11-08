@@ -45,9 +45,9 @@ The platform uses a hybrid **Neuro-Symbolic architecture** to avoid pure-LLM pit
 
 All metrics trace directly to `runs/live_run/timing_summary.json`, `runs/cached_run/timing_summary.json`, `docs/parser_agreement.md`, and `docs/pricing_source.md`:
 
-* **Benchmark Accuracy:** Verified across the 15 team-authored ground-truth events:
-  * Deterministic Layer: **783 / 783 tool calls executed with 0 errors** against the enterprise simulator.
-  * LLM Perception Agreement: **14 of 14 completed live calls (100%)** agreed on event category with the deterministic baseline parser.
+* **Benchmark Accuracy:** Scoped across the 15 team-authored ground-truth events:
+  * Deterministic Layer: **783 / 783 tool calls executed with 0 errors** against the enterprise simulator (`runs/cached_run/action_log.jsonl`).
+  * LLM Perception Agreement: **14 of 14 completed live calls (100%)** agreed on event category with the deterministic baseline parser. *Caveat on field-level extraction:* In event E-09, the live LLM classified the category as Supplier Delay but omitted the supplier ID and part number strings from text, resulting in 0 actions taken in live mode versus 42 actions in deterministic mode. 1 call (E-15) encountered Free Tier daily API rate limits and fell back to the deterministic path cleanly.
 * **Timing Breakdown:**
   * **Live Gemini Run (`runs/live_run/`):** **53.3218 s** total wall-clock time (45.20s LLM round-trip perception time, 0.0523s deterministic pipeline, 0.0087s action execution).
   * **Deterministic Baseline (`runs/cached_run/`):** **0.0357 s** total wall-clock time (deterministic only, no LLM calls, no network).
@@ -73,4 +73,4 @@ All metrics trace directly to `runs/live_run/timing_summary.json`, `runs/cached_
 * **[0:00 - 0:30] Context:** Open dashboard. *"Welcome to the Hitachi Lumada Control Tower. Wacky Wheels Co. builds vehicles Just-In-Time with zero parts inventory. A late shipment, factory blackout, or defective lot causes an immediate domino effect. Here is how our 1 Coordinator + 3 Specialist agents handle it."*
 * **[0:30 - 1:00] Supplier Delay:** Click **E-12 (Supplier Delay)**. Show the Knowledge Graph traversing `Shipment SH-0182 → CAM-360 → Summit → PO-0316 → Customer Orders → Dealer D07`. In **Executive & Actions**, show the rescheduled build slot, the consolidated dealer alert, and the VIP loaner deployment.
 * **[1:00 - 1:30] Quality Containment:** Click **E-15 (Quality Hold)**. Show how defective Lot LOT-0191 is held, triggering showroom stop-sale orders across 25 dealerships and safety recall notifications to owners of sold vehicles.
-* **[1:30 - 2:00] Guardrails & Telemetry:** Click **E-05 (Noise)** to demonstrate zero write actions, and **E-02 (Rumor)** to show the Human-in-the-Loop escalation panel. Click **DevPost & Judging Brief** in the header to show the verified metrics: *"783 automated actions in deterministic baseline, 0 errors against the benchmark, and measured live LLM token usage of 15,196 tokens ($0.0095)."*
+* **[1:30 - 2:00] Guardrails & Telemetry:** Click **E-05 (Noise)** to demonstrate zero write actions, and **E-02 (Rumor)** to show the Human-in-the-Loop escalation panel. Click **DevPost & Judging Brief** in the header to show the audited metrics: *"783 automated actions in the deterministic baseline, 0 simulator errors against the benchmark, and measured live run token usage of 15,196 tokens ($0.0095 across 15 events in `runs/live_run/timing_summary.json`)."*

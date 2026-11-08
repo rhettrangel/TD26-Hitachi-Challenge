@@ -123,7 +123,7 @@ All figures below trace directly to `runs/live_run/timing_summary.json`, `runs/c
 * **Timing Breakdown:**
   * **Live Gemini Run (`runs/live_run/`):** 53.32s wall-clock time (45.20s LLM round-trip perception time, 0.052s deterministic planning, 0.009s state execution).
   * **Deterministic Baseline (`runs/cached_run/`):** 0.0357s wall-clock time (deterministic only, zero LLM calls, zero network calls).
-* **Parser Agreement:** 14 of 14 completed live calls (100%) exactly agreed with the deterministic baseline on incident category.
+* **Parser Agreement:** 14 of 14 completed live calls (100%) agreed with the deterministic baseline on incident category (Outage, Delay, Quality Hold, Noise, Unconfirmed Report). *Caveat on field-level extraction:* On event E-09, the live LLM classified the category as Supplier Delay and extracted dates/plant, but missed the supplier ID and part number, resulting in 0 live rebalancing actions vs 42 in the deterministic baseline. 1 call (E-15) hit API rate limits and fell back to deterministic parsing.
 * **Token & Cost Accounting:**
   * Model String: `gemini-3-flash-preview`
   * Pricing: $0.50 / 1M input tokens, $3.00 / 1M output tokens (Source: Google AI Studio pricing, `https://ai.google.dev/pricing`, retrieved 2026-11-07).

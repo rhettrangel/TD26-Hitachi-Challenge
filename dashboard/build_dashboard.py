@@ -898,7 +898,7 @@ def generate_dashboard():
         <div class="rubric-grid">
           <div class="rubric-card">
             <div class="rubric-card-title">1. Event Handling Accuracy (50%)</div>
-            <p><strong>Benchmark Replay Accuracy:</strong> 100% policy adherence across the 15 benchmark events with <strong>783 tool calls executed and 0 simulator errors</strong> (verified in <code>runs/cached_run/timing_summary.json</code>).</p>
+            <p><strong>Benchmark Replay Accuracy:</strong> 783 deterministic tool calls executed with 0 simulator errors across the 15 team-authored ground-truth events (audited in <code>runs/cached_run/timing_summary.json</code>).</p>
           </div>
           <div class="rubric-card">
             <div class="rubric-card-title">2. Knowledge Graph & Traversal (20%)</div>
@@ -910,7 +910,7 @@ def generate_dashboard():
           </div>
           <div class="rubric-card">
             <div class="rubric-card-title">4. Efficiency & Audited Latency (10%)</div>
-            <p><strong>In-Memory Deterministic Latency: 0.0396s:</strong> Model cited: <code>gemini-1.5-flash</code>. Computed run cost: $0.001215 based on published rates ($0.075/1M in, $0.30/1M out; audited in <code>docs/timing_audit.md</code>).</p>
+            <p><strong>In-Memory Deterministic Latency: 0.0351s:</strong> Model cited: <code>gemini-3-flash-preview</code> (live run wall clock: 53.32s, 15,196 tokens). Computed commercial run cost: $0.009475 based on published rates ($0.50/1M in, $3.00/1M out; audited in <code>docs/timing_audit.md</code>).</p>
           </div>
         </div>
 
@@ -1065,7 +1065,7 @@ def generate_dashboard():
           <div style="text-align:center; padding: 32px 16px; color: var(--text-muted);">
             <div style="font-size: 28px; margin-bottom: 8px;">✅</div>
             <div style="font-weight: 700; color: #ffffff;">Autonomous Execution Confirmed</div>
-            <div style="font-size: 11px; margin-top: 4px;">This incident was verified against formal enterprise records; no human supervisory intervention required.</div>
+            <div style="font-size: 11px; margin-top: 4px;">Deterministic policy rules and graph traversals evaluated with 0 simulator errors; no human supervisory escalation required.</div>
           </div>
         `;
       }}
@@ -1110,9 +1110,9 @@ def generate_dashboard():
       }} else {{
         stages = [
           {{ role: "Floor Chat", label: "Raw Signal" }},
-          {{ role: "Validation", label: "Unverified" }},
+          {{ role: "Ambiguity Check", label: "Unconfirmed Rumor" }},
           {{ role: "Protocol", label: "Escalate Tool" }},
-          {{ role: "Human Review", label: "Supervisor" }}
+          {{ role: "Human Review", label: "Supervisor Queue" }}
         ];
       }}
 

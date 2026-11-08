@@ -1,10 +1,13 @@
 """Test to verify that ambiguous or unrecognized events route to escalation, never Noise."""
 
-import sys
 import os
+import sys
+import unittest
 
 # Add project root to sys.path
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
 
 from agents.coordinator import CoordinatingAgent
 from enterprise import Enterprise
@@ -19,41 +22,40 @@ class MockClient:
         return {"ok": True}
 
 
+class UnrecognizedFallbackTestCase(unittest.TestCase):
+    def test_unrecognized_event_routes_to_escalate(self):
+        data_dir = os.path.join(REPO_ROOT, "data")
+        coordinator = CoordinatingAgent(data_dir, use_live_llm=False)
+        client = MockClient()
+
+        # Ambiguous event that cannot be positively matched to delay, outage, quality, or brochure noise
+        ambiguous_event = {
+            "event_id": "TEST-AMBIGUOUS-01",
+            "received_at": "2027-03-08T12:00:00",
+            "source": "floor whisper",
+            "text": "Floor supervisor says something unusual happened near building 4 yesterday afternoon. Unclear if anything stopped."
+        }
+
+        res = coordinator.process_event(ambiguous_event, client)
+
+        # Assertions
+        self.assertEqual(res.category, "Unconfirmed Report")
+        self.assertTrue(res.unconfirmed)
+        self.assertFalse(res.is_noise)
+        self.assertEqual(len(client.calls), 1)
+        self.assertEqual(client.calls[0]["tool"], "escalate")
+
+        # Verify zero operational write actions
+        write_tools = {"mes.reschedule", "mes.transfer", "dealer.notify", "dealer.stop_sale", "crm.assign_loaner", "crm.notify_customer", "quality.hold_lot"}
+        executed_write_tools = [c["tool"] for c in client.calls if c["tool"] in write_tools]
+        self.assertEqual(len(executed_write_tools), 0)
+
+
 def test_unrecognized_event_routes_to_escalate():
-    coordinator = CoordinatingAgent("data", use_live_llm=False)
-    client = MockClient()
-
-    # Ambiguous event that cannot be positively matched to delay, outage, quality, or brochure noise
-    ambiguous_event = {
-        "event_id": "TEST-AMBIGUOUS-01",
-        "received_at": "2027-03-08T12:00:00",
-        "source": "floor whisper",
-        "text": "Floor supervisor says something unusual happened near building 4 yesterday afternoon. Unclear if anything stopped."
-    }
-
-    res = coordinator.process_event(ambiguous_event, client)
-
-    print(f"Processed ambiguous event:")
-    print(f"  Category: {res.category}")
-    print(f"  Unconfirmed: {res.unconfirmed}")
-    print(f"  Is Noise: {res.is_noise}")
-    print(f"  Total Actions: {res.total_actions}")
-    print(f"  Client Calls: {client.calls}")
-
-    # Assertions
-    assert res.category == "Unconfirmed Report", f"Expected 'Unconfirmed Report', got '{res.category}'"
-    assert res.unconfirmed is True, "Expected unconfirmed flag to be True"
-    assert res.is_noise is False, "Expected is_noise flag to be False (must NOT default to Noise)"
-    assert len(client.calls) == 1, f"Expected exactly 1 tool call, got {len(client.calls)}"
-    assert client.calls[0]["tool"] == "escalate", f"Expected tool 'escalate', got '{client.calls[0]['tool']}'"
-
-    # Verify zero operational write actions
-    write_tools = {"mes.reschedule", "mes.transfer", "dealer.notify", "dealer.stop_sale", "crm.assign_loaner", "crm.notify_customer", "quality.hold_lot"}
-    executed_write_tools = [c["tool"] for c in client.calls if c["tool"] in write_tools]
-    assert len(executed_write_tools) == 0, f"Expected 0 write actions, got: {executed_write_tools}"
-
+    runner = UnrecognizedFallbackTestCase()
+    runner.test_unrecognized_event_routes_to_escalate()
     print("TEST PASSED: Ambiguous event correctly routed to escalation with zero write actions!")
 
 
 if __name__ == "__main__":
-    test_unrecognized_event_routes_to_escalate()
+    unittest.main()

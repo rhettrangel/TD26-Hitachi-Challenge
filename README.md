@@ -1,5 +1,5 @@
 # Hitachi Lumada JIT Autonomous Operations Control Tower
-### TAMU Datathon 2026 | Hitachi Challenge — Supply Chain Resilience & Industrial AI
+### TAMU Datathon 2026 | Hitachi Challenge — Supply Chain Resilience & Physical AI
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -8,6 +8,8 @@
 [![Zero-Inventory Policy](https://img.shields.io/badge/policy%20adherence-100%25-success.svg)](data/policy_handbook.md)
 
 An autonomous, **neuro-symbolic multi-agent operations control tower** engineered to resolve sudden factory disruptions, supplier delays, and defective component lots across lean automotive assembly plants in under **40 milliseconds** with **zero simulator errors**.
+
+Built for the **TAMU Datathon 2026 Hitachi Challenge** and **Best Use of Gemini API Challenge**.
 
 ---
 
@@ -197,4 +199,7 @@ Open `dashboard/index.html` in your web browser.
 ---
 
 ## 👥 Authors
-Built for the **TAMU Datathon 2026 Hitachi Challenge**.
+Rhett Rangel
+Shourja Majumder
+Jonathan Kolgani
+Raman Jamal

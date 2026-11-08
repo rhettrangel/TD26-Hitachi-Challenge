@@ -1,0 +1,54 @@
+{
+  "event_id": "E-10",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 3344.96,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1032,
+    "candidatesTokenCount": 70,
+    "totalTokenCount": 1705
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Supplier Delay\",\"end_date\":\"2027-04-01\",\"part_id\":\"BATT-60\",\"plant_id\":\"P_AL\",\"reason\":\"truck breakdown\",\"start_date\":\"2027-03-29\",\"supplier_id\":\"Lumen\"}]}",
+              "thoughtSignature": "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"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1032,
+      "candidatesTokenCount": 70,
+      "totalTokenCount": 1705,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1032
+        }
+      ],
+      "thoughtsTokenCount": 603,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "ksLvaoGPNv-s6dkPj-XAgAg"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Supplier Delay",
+      "end_date": "2027-04-01",
+      "part_id": "BATT-60",
+      "plant_id": "P_AL",
+      "reason": "truck breakdown",
+      "start_date": "2027-03-29",
+      "supplier_id": "Lumen"
+    }
+  ]
+}

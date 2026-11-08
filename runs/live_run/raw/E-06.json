@@ -1,0 +1,49 @@
+{
+  "event_id": "E-06",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 1999.57,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1010,
+    "candidatesTokenCount": 28,
+    "totalTokenCount": 1303
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Noise\",\"reason\":\"Dealer inquiry regarding brochure PDF location is a non-manufacturing/non-operational event.\"}]}",
+              "thoughtSignature": "EsAICr0IAWkUfRNCx32wFuFCkzDsPZm83XOVTmNYFlBY8Oc6d65Tu8/GVBZgIDLbaOIuj7oXtPA8v4VV7krHRBEv6m/HO3gj3ZQstGgtXMd+hgLTzlbAmh+3Z2cULwzuxwLlBvmcA8VZW7AUNOoq0ZbgBqB+kcs2FUhtBIuSe1y5ch1p9u+4flAE79JiNOh3FLo5u0jV7HcRPnmP8mwg/m2rGn4zeTKNLV5SuKqLXSt+mIiimWqM94JD9sIV8vJuM0+39EwOG6vxz5KpYkYIGWUprB1Z8Ybem4dkUHTKOLwks2WNzYalTFM3ilH+9D9JZboDNYPEn1rCUR0yH4AkMMOLPYD9m8n5893CfmX3rvoeDEIJfTDmmDITXwze/JQ3htY9vwI0OzumxXCZmPMJ3BPJc+fwvky0jbFmWn77cHuRW51V2EvdubQT70OTTayHS1vdoHrWFJHK/29Q2FAku+65AOCQXrLwAj9RRi+ef4kZjn6h6aWosttlj3mV1jmHxo+rLQ7UyGoEh6MqFKBqI5oU+3/hIczLx8C00Q5HbCCf5DMnax1WpG/5+4kpzv/SxjuN6ExWrU7cRQ2mqcVQo0hNUWoVNJPrpy+WAYHlIeSKARhsh2Fj59NtdDwktHiluov8XsyA/JTJKkAGcJ7oaGCqFzHImbf4kl5Lv5RbLnY5t9Hqe/MDa78Wk/+nH7rXOZoEAfaYtuSAWd4dnNpxdnYscfDl6Dw+6+BNwUqYS0DkTX5/f/cd8MyPGnK7VuIXtu3aLErgEOZR2VHG0+HYuXRwBxmJLwbX89m94YckU5cjMypa7dAbiAhaCd70dtuMrTb8EboOBKCRII79JWEL9SuCxpDjllunF7tOjCiWFsc5utI/Msh1AYTH7XR6QZLjzXXq1uihVM7P4GqinJWFwkXouQ/3EaIaCVFX+hKQTSJ0i1mabGl/fkoNOuy71QM3QXgFgqfwpxxnLVTYv8EgLcKfvYdklrF9yHY9U1pDh2EkHFdNpyAJTb5tmDWikTAjA/r2tTLItk1F32hJQdUcCL1vqt712LN44jYx3MtT1Ji2Wo1s9EyEd8yUQcYdhEfaMbDeg++bC+2jg1F7gjx8eCz1we2dgUvx6a+lxnjGTQwed1oPNqNSs+3qiAPMr+KUnCWcvxkoKiufGLONY2BigZ51I33YMoycahPbsEduhqja0n4bWECBqjAtCBc0F2wIxUYIeL4ytB0FH11Q9NZ3det1MY7Gz7jFxEHBZ1GoyQdLSCBrQY5rJvqn5mE+cJRBY8TavtaKzgxMsD9BroHFNu4LRF7n5P2DHgk1ujUYHXyj1/9OVLymRNSKZvKoxV7ymS3zyKUjVmNGUU29CGsF14SPdoV03wfPUaukOXEzMmsqOUrXbFqPT8DzyDTIG1sZV6T7lMSKhEvtDcV35IHQ0nnbYZFVcKDJjP9SnAtclDVwpzU="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1010,
+      "candidatesTokenCount": 28,
+      "totalTokenCount": 1303,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1010
+        }
+      ],
+      "thoughtsTokenCount": 265,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "hMLvar_0HZ_nqtsP8sCggAY"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Noise",
+      "reason": "Dealer inquiry regarding brochure PDF location is a non-manufacturing/non-operational event."
+    }
+  ]
+}

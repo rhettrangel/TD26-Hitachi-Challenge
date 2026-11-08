@@ -1,0 +1,53 @@
+{
+  "event_id": "E-03",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 2367.11,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1026,
+    "candidatesTokenCount": 63,
+    "totalTokenCount": 1479
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Quality Hold\",\"end_date\":\"2027-03-01\",\"part_id\":\"CHIP-IVI\",\"plant_id\":\"P_MS\",\"reason\":\"faulty weld\",\"start_date\":\"2027-02-25\"}]}",
+              "thoughtSignature": "EocJCoQJAWkUfRM6hDBFwJbQAXgJvTPAAmpBHuj2D/7vhBAZPAKaVKJtloCWgJY6GP329Jwyq8nY4YAL9jAt6sYcipTUK74f+l/pP8dmHGImO0VGSWRGvZMQZvkkaLum8wY1Icf4jYDWJY/SF7ZtpJlyAYmAAITBka6Ahx/sgjcTQZxyx5plaDkkbUv5V8tVnESmXYIxicVvEyK7DxkonCMlCmCZoqw6qDov1IXuQEWZgRXghsYP8wd9hl6ZcJk1TVtA4ioZctWCqTOdHed193ivUWBZXmXFeGoEKiBc4gukkdhA6gxuxbUvbz4pgKzW3MVqpX2gCGxEFsSSyWPVgO7bmb5BsN9CNy8BvpIgDU+3TWkrDGZWfcEahE2sHeSH2UCdD2tfqyUYzTTNrQHtBL0+JKQjm5MQERZn8BiHRLavnTfQJT6cqjRZKmMI8X56djT7lbR+qeravvYx4R2OuBDgLzEUYrobFlIqZfWNxu8lyX5fL9W0CbwyLk8Cusge8FpYOjPv5np9ZuIXAIjeznWG/u6OJXezHUI1k7+ZriP+nZJ/nVpITrgJbzRU9u2oIedR9tGmvYIeq9krn8N9kuA989BB2dLSv/8KA+xiedImJAJ53sATpMm8slPEqLB5Inzo8RYCKewVZBak0XyWpPIqClKbL37r2gU+GGq51oB5l2mQBqZ34OFt25pr3W6BC8PQaUZjyYqBCA85RormVFG/W0NPBDvXe/eI6fvx6seJZPQu8/EdwliKA8VicJ4bHoLB2wNqMV3SLEf50X0pVdD+tSQTtLEjPDfbtgv+FUgLGjaINxxG5HM1At4ILLkVA5ughHh9uI2kjQyOCQymJGQXqLWWvhvQnA+006GDWvlWCSu0nB+yceAXXrhFehpbkpOsC+YXg3KgzobrAX8J6xHg4o4l1/JciJLcer35wBqtKSMoHe53CDhyI3s4oSb7STcnOmQcmmhNvCF3O1RTZUFwO7YBiIQ1vfvuvLbFl/iGIi5DPSo/GaU7Yhi9Hrmb2Ajfb2WO2YMsa/vs0hr15s5rFxQIDLeRIwTVzzjLyFjtNIxXZQyy3sSVnux+NUj15Xc5PZELoGZy/ZSdPmGCrVz/GbvLCXuowaTtKzx0mfw51BrK7tgelasuMJC2BMfJpILoaxPDXthk9QVaWRryisYK2C0aOXKzH5/5mkE7Ci1rrbX1Clhk4T3RkAY5k9AhHDalQ359y8C1BC5Vtxtym7DbM7r+UES27pUKb7MHOF99cnv5pX2vHSrLqoTQzL+++PAD3OOnfsJBXiSRFY8RO2a2jGtOQ/V04Q3gV5lSp8VcPVnniQwqwu7vLY/wXd9G2Z2hBVNGLJvS3qswSMNvgnpkItAcHAwI8LMclIHM6C8QO7lxP2xQrBD/JNKPv4X3/aKA7+q01c2F9/EEc1iIPOdKuijMVGcKnp0fJxDfG9xER1XXd1yuLuqAdB9i7HnJW6VHDAbNnFaKDh0oT9m9m8x3bVAVC/O/enK4kCD02J25Ierv1mIuumRGP1gs2fp803SJiiFJMldHjQ=="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1026,
+      "candidatesTokenCount": 63,
+      "totalTokenCount": 1479,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1026
+        }
+      ],
+      "thoughtsTokenCount": 390,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "fMLvaqz1K7zmqtsP1_uT-AU"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Quality Hold",
+      "end_date": "2027-03-01",
+      "part_id": "CHIP-IVI",
+      "plant_id": "P_MS",
+      "reason": "faulty weld",
+      "start_date": "2027-02-25"
+    }
+  ]
+}

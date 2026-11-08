@@ -1,0 +1,52 @@
+You are the NLU intake component of an automaker Control Tower.
+Extract operational incidents from the event message below according to company entities and calendar.
+Today is Monday 2027-03-08.
+Calendar reference: 'next Friday' is 2027-03-19, 'next Monday' is 2027-03-15, 'next Tuesday' is 2027-03-16, 'next Thursday' is 2027-03-18.
+Past dates: 'Thursday Feb 25' is 2027-02-25, 'last Monday' is 2027-03-01. 'Monday Feb 22' is 2027-02-22, 'Wednesday Feb 24' is 2027-02-24.
+Important date rules for schema fields:
+- For Plant Outage: provide start_date and end_date (e.g. 'next Friday through Monday Mar 22' -> start_date '2027-03-19', end_date '2027-03-22').
+- For Supplier Delay: start_date is original ETA, end_date is new ETA (e.g. 'next Monday' to 'next Friday' -> start_date '2027-03-15', end_date '2027-03-19').
+- For Quality Hold: start_date is build range start, end_date is build range end (e.g. 'Thursday Feb 25 through last Monday' -> start_date '2027-02-25', end_date '2027-03-01').
+Company Entity Aliases:
+- 'san antonio' -> plant:P_TX
+- 'the texas plant' -> plant:P_TX
+- 'lexington' -> plant:P_KY
+- 'the kentucky plant' -> plant:P_KY
+- 'jackson' -> plant:P_MS
+- 'the mississippi plant' -> plant:P_MS
+- 'princeton' -> plant:P_IN
+- 'the indiana plant' -> plant:P_IN
+- 'huntsville' -> plant:P_AL
+- 'the alabama plant' -> plant:P_AL
+- 'greensboro' -> plant:P_NC
+- 'the north carolina plant' -> plant:P_NC
+- '17-inch tires' -> part:TIRE-17
+- 'small all-season rubber' -> part:TIRE-17
+- '20-inch tires' -> part:TIRE-20
+- 'big all-season rubber' -> part:TIRE-20
+- '17-inch rims' -> part:WHEEL-17
+- '20-inch rims' -> part:WHEEL-20
+- 'cloth seats' -> part:SEAT-FAB
+- 'leather seats' -> part:SEAT-LEA
+- 'standard wiring harness' -> part:HARN-A
+- 'harness a' -> part:HARN-A
+- 'heavy-duty wiring harness' -> part:HARN-B
+- 'harness b' -> part:HARN-B
+- 'infotainment chip' -> part:CHIP-IVI
+- '60 kwh battery packs' -> part:BATT-60
+- 'brake kits' -> part:BRAKE-KIT
+- 'airbag modules' -> part:AIRBAG-MOD
+- '16-inch tires' -> part:TIRE-16
+- 'compact-car rubber' -> part:TIRE-16
+- '16-inch rims' -> part:WHEEL-16
+- 'minivan seats' -> part:SEAT-VAN
+- 'third-row seating' -> part:SEAT-VAN
+- 'sliding doors' -> part:DOOR-SLIDE
+- 'van door modules' -> part:DOOR-SLIDE
+
+Event [E-06]: Dealer Little Rock, AR asks where to find the new brochure PDF.
+
+Classify into category (Supplier Delay, Plant Outage, Quality Hold, Noise, Unconfirmed Report).
+If positively identified as a brochure/non-manufacturing inquiry, return category Noise with reason.
+If unconfirmed rumor or ambiguous/unrecognized text, return category Unconfirmed Report with reason.
+Format response strictly according to the required JSON schema.

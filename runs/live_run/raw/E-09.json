@@ -1,0 +1,52 @@
+{
+  "event_id": "E-09",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 6536.01,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1033,
+    "candidatesTokenCount": 54,
+    "totalTokenCount": 2599
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Supplier Delay\",\"end_date\":\"2027-04-01\",\"plant_id\":\"P_AL\",\"reason\":\"customs inspection\",\"start_date\":\"2027-03-29\"}]}",
+              "thoughtSignature": "Eq0lCqolAWkUfRP1vjAHyH5Z1w5ZTY8MGnEK5HcxAcxvsR2hFJ6byo6jIXViI4I4NyDDEU94Vpc1EI5fIliz5AyULl7GH0OqVqvSAV04vOWZGvMCAsIPw5PQUbQUKSZRwN3OfBiM3mG3p5g0OKn+wKFn7I+1PCQYRcYzBcCsddpjE/ahwNW/wnbOOe+sGBHF0zTRpPOyPJRj0Y3ru2hHPpBWWY0NaaxKOFmYqbXmbgVeG5qYNHa30ScVnfNWzKwWSXWDQOlOos/W90lbw7wTVjwOP2d9TgN4bDrWeXstrtc0P64r/4mSZIy0FXMwVQiw13og9NDtl4RZ3HBHLnjrGYzs5n48dmQ/IHLvcyW3sU58o5jTL/PjiFKAuF8VNsgF3hF7GtxBMpgBmHsN7tQt6Xi+su4xqjazSPCpOf+yX05DDxFC92Aibn6G9KVbiigylx4i7oowaiBY8YU93ViP+3/mqlIcB1hdYPm52G2/KVW/9EJUCOCPc44igZhg+0v5JZ/9efx7o27zW27vwTRCZtH9QAir+VCIiZHgXwjJzLbiHNyHQxISQY+GncDvHNdvYJJCX1X5v8D1yPYvUojteMuwEG37M/Ff1xKceNqerwvjOSeiJ1FNZS9t3I1OQ1KJWP0prHor0g/qSNNoECNDnRxlydggncUBO6KJYe4L+5mhNASh3Z3Cfn6Z9V+cIBJGAf0grgde4YeDeebldC857L7qQhmev/cKBc9RgYIKQjYcmi8sy8rluerC7YL4uGvk+UI1rNsfQyOzlV41fULewtkhdGyIK8k8s0A1b+bB77wXXW8prBZcLdO5aw7HgmWd/LTUjhnmcpmp52SXKaKgX07ogXSGS6D7aO6EYdRqDqjAioYsoXaDDR/Xq5jFEw3idpqvlP4klNOmxwpb2dUEIh8RXdYcsws1LilSXq+0SkWal5OwLIW5vbqu33HmKo+atn7PYBLSUx/lYGXYONSmLYYS30ghXJj/r+8K2CvPAnWn3kVtVwlYitQGmMv4XMIrHrRz1kaUhEeU44qpKMvRlkluhVNk2JnHkzlfLdxxDmS9IeFZKl9srrgGuSLfYNgm2xC36nKuni3B72kQMhaczl02UDXTLdrq5ATNwb9UcUczuoDC/AgfvelqSihBJqwYuqUpVFttFnEL5dcng/AtOZeFFWjlUHvdUppVujw4QPP0ToS7tHYF+ldS5TVZYbgeBrbVZ0qrx+BxXUAQjO+uY0K69ZqH9U0ATdpgYzAbyw2p7jzLHAatXm/m2DboPKJL9cEmqmCz592jynM4FOnrWq5k8Z8czdRLPlG8Khnd1JtAMShSr6Kv79MnyIyJ6Ba9QCqmX+mHxqBKaB8G98f77B/GwY9QpRIWuxqm7NUDjtA7H7k90Lkap/A3NTgiejcNtELNyzzrPyDDeP2b5AZ3ACCXOF5XP+b8vTwu6nVUHs+TwO0zoMMVBWyinFUe2FMcMHov7Qrrf4CEY8k0RCSOY7NxU1DjcplI9yhuao5AlulfOKM38TLsu6Gvbp7gtyjJkDXkPLyCygLKAIgf2HBAwOKnD+Jqui4munQXcMKkKg16lcSMx7KYTh3okd4cEK9UiEWrTDruNpEcE8cr9rnkaqrnNqA3hSWHT7PJgNqGtg8ja1xXuauZSFjYt7htbnejWicWSFpyHBrraQ+EYkQi2/S2/SrckkFPGeHy1Ps/keqY8/JNsmyGLHIR1ucNxan3yo51zotA9f975+IC9pY5hpZ/Rbvy5uOSKFvWNkQreag4VuytaeDHHjTLmbA0pxHJ3pxm9vppNJoBuR39kPqpPX8gM8j8x1Inr9R3NhINWHiNamEBshpf1GgLbXmi23VePaP6al9g73hXCUO6JvcgcLgCLXK4E/EE5PUImIzGC42Xd5Muftim0I/jFOeCvtaY4Qw2kpUnqE1BPmjx8eHP3ozGHcB1CW+hFa1fqqroEeWIbjT9uWhjyw/RUhOJylbKGfPKevByacu5MKno+EKNJp15Iw+nj6HIegY8qZZxILjbT1D/oiOKQo5OUPBU0b2ocj3m311L56/g/IO+ZDOPsQRjan89ub2WOlg2VFozOckj7o695ujCfdKZuhdIJedMhVpYX5MiNTxhheljEJglh7/ldZ1OKEKWIxz1EH623xiKuE9twJm8+SsqFUppJ57+Uy2uZjnymevwle/kqcumcY/ymm7nRfNhSHhB5pSWFjo9gFH/SWYF7D+RTzcnuVn+ymNbcFLGf3nTys52tpZO+Ts8wtIg0nK5GCErZG9qG2LgKb4+ICUyZShDmBKzTYt4BkUmWBvd78LVydxvXWLFRSN7j4sHtbTZdQEnpn5LHC7yGeqn49sGGs4Nruxd12Yuu6TB1sgmx/PgoaptNihnrSEi9KQF8NhAVVTj8P/54joJcSgPqLT9B1MDjxKarUSn8xtk5H2gMf4PbHNuL2BWnfeUA+0uxyFH7J80mz/JMmBeYDKcTCkz+o+lzQqzt3aDIgCqYx3TZHSEUcupyyOiZXcjLtx6g5Gfht9SHI4QaMPzTUW8UkDc1tALmkPiT9Wx67NLvwJY/buJ1Ky+ZaH5rV3YKij+jY0983Ri+a1K9mXc6rFbBLS+Q6dxnhJLOz4PECsfsek29aNVgpiseO74LOD08A+8BkZrStRTKgYJE1HNIyeJHjnI8gAERB1T6c87DXl9OC6aAHUzREPVbfWFiO4R7NEso/gtZCRTOZMjjOfxvJ2ECsvFSxm3mKR/rAbljAvNVcQphf+Bl/eqyda+qHfQdJS/6XjpICeizXUGFkQJv0stp/8eI9unBpwQYvCAJCd5mQ0zBssq9PjinHpCaxiL5gjoTbjLAKO/8YX6lt+p0Yn2JKLZC2eP3pishgzD/sEcrnf3MLUWZQ9VI0q3Z7A0hv1oGkqwhh3BmaA2WdlCxXTgq7wJ5FCNQlrYdH99SNWv7sMDULHsDofWLBg4lbDDrc1e/6nwzyJXJDSz+u79M8fo+x7GTpUdGQFJfRUNfzMdFAmsMhaBy3gTVV5sosmRmuzNsZBND+lgP6G/zJJIYqlSDeAj9j7LeabbskMxlUPwnmBa1p77z2UYiPI5fGsYspLFUsZ8Z2xJiQbCu/HTep9e0QitfTSFp4THfjh8ETCkzUN0VI3rQZpAp7s4OJy6x2E4kvIXhLmONwzzNnn8+4cRSQFfvKQl5HLevimBx5CV+kuail1DR5XYKrLyBPlhtmcyUVZV/mdSQ2ASlZeM6AcKi8W/RWwJ3y598Et7w2Z2FdO2luTmebfNN+5GlilgtEdZEqKnRLxgpVN7b+GnJJzLW2ye1n0h6LVsgHbbkZTfPNRgqB1qATEp7Wam5NarS5lmM64xZcewMzQfhHkePz/+lTQLazRY+Unt6ZaRK9CCMbDcS5xPQbAcV0eSpdMHIFHKQEiEkEUMI8roWIwd4oT8r6h5IfIwIrcC/OCzDamZ8wl56hqZ7yLc4nie2TogOpiXZ6BoeiDww3fU0Sm5lloJkLN/zWnZW306kr2QSz/B3/DF8VHELN3T+Yz8TebQgDf7+KuJEzuRpGtbmrbw5jilbm9WvszKRA5knfsvniSFNQwn3pn8xh6LInqMy/QZsyu1j34YsLJcuG+gQGVJu6D7pP7/Er63miPfU3EcH7YTxnUVh23rlCu6t9H0y9RuzKZgqRfzEyH1H/YDkXWpdByjQp3LNhmYg2ZM5Y19dV2mden/ClOGL9BO2taib0T8MlPe8R1pOFAfKhqa/o4Wx9nViLMjDd6khOypRW2ho2KaRGZ9bw1bwcC/dOnQy7VYr5ma1aQAkxTAAAzMjdYgxVk/jn82dQoNwS/63tbQJ95hTNRN6reZJHW1eh8/DT3ydrmHAqno4uIHz2EUsoXHe9CtSipkaDPe0IvGGY2Env2O+evHuN1QWHuABgmufzjzeGVdcVThwMuXQRHS7boRIIYL0ErYztGez8kRUIjkNmdJDJvgDoj9Gn7u5l/XJv7OC5KcxLBaG2uJWSz5o7S0DuSZvlWRicWsRqUrhhYxAgRwyvxRD3CuwWmmUsaEN7u2YElYf0kg3GAN0c3IHcX6DgoDqn/H/cAcbLjbiETToPbyYcl71/pfPEa7E84+3xGJSaB4DaENUMrFxxiOnj07LI1mheTAS0Hx4b1m3YDm67doM8EZ3P8pA/2T2NbrSoU6CVEFSErWhM5ICJjBKg8nhcRWN751PPrjSxxqMeG4oKknZsIxeRHje7XBPLTxxXfHvM8iYP+3JkfE5C5XmK2/1malt7yc+E0UjQRG65MA+5hDldzMF3aUORUK84QlGRKzMaSHE9BNSY59w3pQpMmJIMaWbcs5IyjxFIRAir6HNCr79OW7r0geAyMjwAJgX96s2/X/Zr/ZnciZzdZ4qRDykbqTQ91lf6+WlDqpek2wiv4CaXeFINOmpP/esHFt9uVrExE2uitvEzUkMz0DXFlfuZvKcp//QYOiKTykrPSsM6Bv/+WiMwF051y+njXDFUqsyX+IXFVqNGB+AwCGSwgyAgoSud4bHP8lFiXKTq8UZTI+MGX+3oEP74aqS9sg7Tr12OXqufMPanolOH5T1ZzsuqcvnqCyp5kEccplt/5m7B6n8Lv3HTaNxLPNvc0VzpZJIf7AmWUVnCaJz5AUBCGwfXzAD/73zuSLO9qjnmkMeKJuZ4OAsfsgzBuP3Y5TsxsJASNfpr1/Y8dtDoTdVOoIJrlnEw/DbYAsBCtWEpFmNGTGpNqZA53AHZf1WRUzG/zo07cAEupxTKoCr2cX/xV42Wk9OMLTYbw//GtSFZMM8K+6Ow9Zbc6qmNqmrVV1uAwM/4xDJDP9Om+ZXs+N3bHqUKb8KPIIhWfyZwzYqMEGqqCqey3TOH9CMEVy7tfKKJBFmAxHtOdiH9XYJ5FDqwpDKQLoNfMHTmK9fx4UxJhLhv2QM2HfhtOXeC8PfNuGP/aC1mWo5r+N1E2hiAOHchFzcKGqtgAu1aTrApivCq2w4vCooA9c52a+ADh/KtrvsOF4h0krSul4l3R0mjJE2LEtHcsXpHwv1HqM8kXL/CvotsgTGSI084zjyEjiNCQDXbmg4EVKqwyD9256LyELNixvn9AkIO33q21m9fnEqiQZPXulEERVr/IiykgXftLvj2xeHVFY5Eos8a05wsCyvfjmluh4vCenpNPki9L9yPFySu28xDrkF3IiPKgvO9OQ1Ij2zaNviol2Npw86oDaUXHtKHXFhob4gobqdURfpEzA4IX8zKQ0Waj4bLMiiFat/G8e3FbeMGMgpW+swNDiviF0QJmhjKVEZ6i0IS8Zjh1P7/vwTpGyQVnxA9EJ/MwcYByMOqVHeo/ixo5bp66HkwAxSwl/fvqWQVIsHi0lA1V3krIoZeTRHABoSXjIMguEwuBwcIzc32urI7wLBydiRybcJr4Id2ubPbuztfKZ5jAkfnnqnoPWq9nR/tURpyQABkDg44cwtCHwrvQdhO3y70YvDppm88ubVwLebLej4325v1U/OMt0bL94O90BPIOWsyWIZz4s8LQdszCy+imEWDzJ1amZtYZbochbvASUh606Yutc0ziaOV2ZWuDIaC7m0L+wUctAch4rvtre499LVwF0VEhiQpSbcc46D6XM5uprEIjxGvJ/CirL3PLjEtkf4BAMTjq7kiyGo6Xzg6juw1l1RJanVjePS3Xtf33Acr7FQzytGf8FCgDCR+xQUWnHTmUs44Xno44/BpjyqbR2eO1KbuAdBt/vrPTK3zzzfrXyx9HBnbKaBQdYra6k4usesPTuzzra87JRoi8ncSXn+sybMfdO7P9wbN8AjG/lPZX2ccYsvD+qyzkxZcUZZGj4/caGHwAcsAZ0oXEy6nLrnQE8x1fMDDQw2OfWWVruGmHDSd3QT+Qt4DvI8uLBBoECOA7Kdc4llyaDHMleO5TaChGEyD5i454RDN16w8BuIuvL4QDYFpoh/S9nejsTrfBPBFN2fSXc7enOjUjsrO5lXGTXqgNvkkZxT6Jk6vfUm1bpq3OC6qMkpUaaQACHoThuvDY5yeP1VQeYWJ7H6st5e7gJJkB1onSp5I4Hs3SEs3t9MU7+CwVb2RFXc3S3q96AEgFFQfdrrXnhmaMW8++6lR8khQxQL07X1gUGvWWcqTze+PmEIK3qo42XMqRpNP3f/qXN2g2n4JXFirFBuVP33EAGvVGaNKHojKryJ7xMlrSkFztK22CaoTmKTIyL9Q/5ejc9kp6C7+dUvi5N88+eUVZTYgeNBqwyx7PpmOHNKBKm8WPybMd3AvFZhZ79j9Qkv/JSd3goVDB2lbyv2axHr15LVDLz1F0Jzy4wYLfavhXdd8MJKWAqmM6RCIZFALcVjEFq9K/hqOP+QzSqVqQhcxk="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1033,
+      "candidatesTokenCount": 54,
+      "totalTokenCount": 2599,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1033
+        }
+      ],
+      "thoughtsTokenCount": 1512,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "jMLvaonvDcmeqtsP4bvvoAY"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Supplier Delay",
+      "end_date": "2027-04-01",
+      "plant_id": "P_AL",
+      "reason": "customs inspection",
+      "start_date": "2027-03-29"
+    }
+  ]
+}

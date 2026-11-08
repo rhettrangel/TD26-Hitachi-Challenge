@@ -1,0 +1,60 @@
+{
+  "event_id": "E-01",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 4168.79,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1074,
+    "candidatesTokenCount": 117,
+    "totalTokenCount": 1989
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Plant Outage\",\"end_date\":\"2027-03-22\",\"plant_id\":\"P_TX\",\"reason\":\"software outage on the line\",\"start_date\":\"2027-03-19\"},{\"category\":\"Supplier Delay\",\"end_date\":\"2027-03-19\",\"part_id\":\"CHIP-IVI\",\"plant_id\":\"P_IN\",\"reason\":\"severe weather on the route\",\"start_date\":\"2027-03-15\"}]}",
+              "thoughtSignature": "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"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1074,
+      "candidatesTokenCount": 117,
+      "totalTokenCount": 1989,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1074
+        }
+      ],
+      "thoughtsTokenCount": 798,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "dsLvasraG5rWz7IPrfjhsQY"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Plant Outage",
+      "end_date": "2027-03-22",
+      "plant_id": "P_TX",
+      "reason": "software outage on the line",
+      "start_date": "2027-03-19"
+    },
+    {
+      "category": "Supplier Delay",
+      "end_date": "2027-03-19",
+      "part_id": "CHIP-IVI",
+      "plant_id": "P_IN",
+      "reason": "severe weather on the route",
+      "start_date": "2027-03-15"
+    }
+  ]
+}

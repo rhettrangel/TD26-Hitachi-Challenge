@@ -1,0 +1,52 @@
+{
+  "event_id": "E-04",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 3098.44,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1027,
+    "candidatesTokenCount": 57,
+    "totalTokenCount": 1698
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Plant Outage\",\"end_date\":\"2027-03-18\",\"plant_id\":\"P_KY\",\"reason\":\"software outage on the line\",\"start_date\":\"2027-03-16\"}]}",
+              "thoughtSignature": "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"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1027,
+      "candidatesTokenCount": 57,
+      "totalTokenCount": 1698,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1027
+        }
+      ],
+      "thoughtsTokenCount": 614,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "f8LvaumWC9XQz7IPxt7z8QE"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Plant Outage",
+      "end_date": "2027-03-18",
+      "plant_id": "P_KY",
+      "reason": "software outage on the line",
+      "start_date": "2027-03-16"
+    }
+  ]
+}

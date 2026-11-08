@@ -1,0 +1,52 @@
+{
+  "event_id": "E-08",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 3119.65,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1045,
+    "candidatesTokenCount": 54,
+    "totalTokenCount": 1506
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Plant Outage\",\"end_date\":\"2027-03-25\",\"plant_id\":\"P_KY\",\"reason\":\"power failure\",\"start_date\":\"2027-03-24\"}]}",
+              "thoughtSignature": "EqkJCqYJAWkUfRMF5PXZvToO2MRQLhw4RR/yZm12ngOliajojN5gndTFkcxg6exU0wnnWSGQKzKQqyWHQ296necqteTy82UsLkIL6AtnEP/RbFFnJ4o3PJGqxe40BHa341ahq1ANduSY/0tayyTi6Qg/aOPXh4gvbR9Gvo7yqrUP1PWboXaCqewERujpaV2GPM1JsaVOuPLy2cOZRfL0IZ49ImfvMejYscxjXpvxm/S8c2HY6OAZL220EDjk5JrKr/DUzYKTQ+h4AWpLH2PlsBd6ArOdgR+vbAZCHhIMKzD/DahJTtfSXtYuR4lhNjpDCCkq5Cq1dRYGj4sZEh0F3tTBz1J3PLSQqsCD0ve+dEqlxriO3WBU3h73qNbfru1NMuwDNmvIHjsq7aiBjCfL4mxMa+2BocAvM3vjkAxVg6z786CKFMgIZo1WzUL7XEANDJapY4dDXiCBRjKElkitPDLb7Rrnl+HUCs79za0BPtv5/zJXfu974Lbadi2iWcj1zK6ugHeN3bAnGAbTa6/2Q2cGVRmjlmpIKK9qCIzEzymb0TuFil2MZtUWAo8P4rH/Zcr0jtEgddBqhBPRK9plQwgGwScwg78MfZqDsVSFNgzui/+T1RWWrNkJHc8NtijrPypAjlZBkJbllrObhgULvj0J3j5FET++ELFzVwgRywy/ch1H9js9toYI9AuSYQXrV80tGQ4nLikhNQKCbwC8wCOrJmE/8wbb67mFb2TRnvAq7yWQTydaGALNEagXOdovSRQATcSdBowzyakbtbNJ0AV6N9c1qmJFA2GZsFGvl74aZZh4XzIGedq3TouWEBu+34umm9HCMADN5Km5RQgspnKZIlj9AuizfQf3db4ReMuvLkpD9eiF2U6plOQcHSaCu1Px489KwKjhX5lTEZkOONYZVN0eclHUPqKJ2uHbsgI116+TF2O1FA0HgEKYvQG7eijJyKaOUhg37jpeIfORr/4ORnAJCEc3a+q+196eECsiXUWJprwIrJkkC3UnShX8Y6xnS3/Hk+PV3ZC6uvEcWUa1old0pwO+lAf6CT4V2bNaDFmWxCJzyUoOkGvND4eJN2BlwIVkD4rRo3G3SPht9jpS/iLFNsJPlGbK5s11wQaX+Rqec/NGO+a8dujFCK57jnZSqEu1i3/liHQAORoVRgWiWMFwIfgERZgDItaJzXnjJ0pOJ2H6QoABYcDzviR+oev0qrWCz0ShPlc5iabSRJxa3+3mRQ84yiSzmncNjOmTHUGQ8N0mOgevaI9dfldYTMQWlfpmbRvPEIoPzbpjI7vNLFSbgezzDO3O5ijLGrkENu19de+j0QAEaDKytXLo7+bl8GAV65dnsKDlYJp+PpLH7B8ye3zxied1j1mLSE8NZAnW0BOIzfN8jFVkrt8Bht6875MW+y81a2dzw5oxvi3UBrSrHF4LN9HFNkxSMus1xJQmZuwYq0ze9Sh3eK6JG+FI9tQUUutL8vwnVuf82XzR97qmU11Q006u5YlA+LYfJvKFZWYD4l6M9I9SympV6ybScxhcH/SKi6v8l/zEasn8p37/U/VAHnbCY+9G0T0wxJchKUTBMnZXHAc="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1045,
+      "candidatesTokenCount": 54,
+      "totalTokenCount": 1506,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1045
+        }
+      ],
+      "thoughtsTokenCount": 407,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "icLvatGULaaq6dkPuPChgQY"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Plant Outage",
+      "end_date": "2027-03-25",
+      "plant_id": "P_KY",
+      "reason": "power failure",
+      "start_date": "2027-03-24"
+    }
+  ]
+}

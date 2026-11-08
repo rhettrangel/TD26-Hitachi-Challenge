@@ -1,0 +1,49 @@
+{
+  "event_id": "E-13",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 3012.28,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1015,
+    "candidatesTokenCount": 26,
+    "totalTokenCount": 1563
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Unconfirmed Report\",\"reason\":\"Unconfirmed rumor of a possible electronic shortage mentioned by floor staff.\"}]}",
+              "thoughtSignature": "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"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1015,
+      "candidatesTokenCount": 26,
+      "totalTokenCount": 1563,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1015
+        }
+      ],
+      "thoughtsTokenCount": 522,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "_sLvaqL7K-K7qtsPzN2Z4QY"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Unconfirmed Report",
+      "reason": "Unconfirmed rumor of a possible electronic shortage mentioned by floor staff."
+    }
+  ]
+}

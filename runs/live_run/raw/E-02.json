@@ -1,0 +1,49 @@
+{
+  "event_id": "E-02",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 2518.53,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1023,
+    "candidatesTokenCount": 29,
+    "totalTokenCount": 1486
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Unconfirmed Report\",\"reason\":\"Rumor from a supplier rep regarding seat material with no dates or confirmed details.\"}]}",
+              "thoughtSignature": "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"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1023,
+      "candidatesTokenCount": 29,
+      "totalTokenCount": 1486,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1023
+        }
+      ],
+      "thoughtsTokenCount": 434,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "esLvauCPCuev6dkP9eeu-AU"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Unconfirmed Report",
+      "reason": "Rumor from a supplier rep regarding seat material with no dates or confirmed details."
+    }
+  ]
+}

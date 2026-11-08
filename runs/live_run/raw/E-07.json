@@ -1,0 +1,49 @@
+{
+  "event_id": "E-07",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 2656.98,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1009,
+    "candidatesTokenCount": 29,
+    "totalTokenCount": 1319
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Noise\",\"reason\":\"Dealer inquiry regarding brochure PDF location is a non-manufacturing/non-supply chain event.\"}]}",
+              "thoughtSignature": "Eq4JCqsJAWkUfRM5EBWVdakh03HDx4Dvmxp+OxgoRGSPscOFxlxifH3TxpGT8Lj8mpRTqVjFqMdFJO4fCI6mLdI1hKC+5VwFzONidpRlS2tSrmYZ2A5g6eaH5ge23bhPSW7yxllhhq6uBXKrMPM/MZesmUQJQ6GgC0TlMKsnKiWOwMHZOXolVGIoKrERgJH3N06S7RMA2mfWLps26ws/wQFAVi0Jxrd8El1K+yxSf8Io9yT3ofFRl+/jkwBjrLF2lmKFpJwja9UH630lGVCQodm0rIkunhQZ8p3E90IdWUAd4vvSKxBj5iXhRJf2un85PAd6zjWLLheSfxcVdUk0Vvf7p6Q57275p5iRU+OE97PxBs+s26Nj9rNjlhLTvnnm8ZCVHrzfqn7HpetifH+/TgGX5nFyNz1skfl4CCohWBlOyLS8mYEObYzpJ0Lp0iH/ZIQk0zxgTf5NWVwmFhuVzYQ4p+ep8QGjk8I82QFf9dhRGdNdmLkN53F/yuH4jsE6Oo992MLYxpuHNybNk7Ur+W6lPGqVr6FxFJr1ydbhcnJp6Rmtp8dhLq87BjNwfT8qba8IKUQlOpLp03+kMEi2+8kj1WlbhU6+XgNRQ5ys26KShPOK6f5EyA1HMfGkA2SyyLsFK8Bh0JSS0XWSvirzG1I2RVmCcgyfV3nA8muqr4CHonlCNgUWENQA4X/HTzUtPCM+Z8YviFO44lE6PSvICGBKFxR2aPCEKGTei+7E3AqMKaERFUpXJhYxUx4rPy0ofiZ0o4FcbL0KVPvL0cig5ZaXgRC7hKg9Zwm2Ks/GtQ1f+hmYTa0Gb/xTx9/SIdD2rvBUcRbwyMQFevmONB/TRHHBnoKLfNL6YOgyoWS252p9jD+O9nhNZRYqcbed5NZfAMRYynKBwuJWmUyCUzrJn2JvtNhcAgle9eDv0YSWMn/C7KB53T4pRvUPAZRf6xDp1b2ZRo1TTjuq0tJlmFjolVUkqWfNllUzj8wMtoDD73qPgzWIQxWmDIjiGjRfL2k0N/N+vr48HI2glLtoEubBMMWFsxf6QXDTrZRZ5kTYdqyCXySE05UBFPEs0U3CQ8+7aCalj7NJonq3/E/T6+L5+RHtzuilU7W4Bt97+rqmhAMtCQLgIq13V5IPVQ9yWO724g7bno3BBRI3kdhXDVkh5tvbmNHquRUCzXCgMvYdC6nLo/Cb8LHRXNYcSVebI7nNWv1UZDLA4zlaT3RkqdCJm25C0/BNDsDEIw+mwQPVeqY657rmZlZm8wc8f1DgtjM0BDJvIVwQrkmf6QSew4QfTK12vn3Qciv7aS669ZBA/7+FyWKfyr90FmTs4F6g7UIQxSPeG4RwWQF1qgRhe1mKjs8kITVoo+X5Ra50mbjPrI6CAbRWZ0o7Zsk2i7yULLGD5ARMBYJ5qn2wu4iHI0iyIqA7dp0nqfGmLGEKAn2MmjcrSpXxIASE+AdxXagi4OFjgdqIpDx9V1OQ0AO3YJCxEb4+waIZ6NwO3pHumSPRlM5iANzGAHgieXeJqC8Kfxo+Ed0XxMy+g4sT7QRgn+aV+UtLcHNla5Ygi4AZNVYr2dh5LXxbzxVBtLLGR8c82BPYww=="
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1009,
+      "candidatesTokenCount": 29,
+      "totalTokenCount": 1319,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1009
+        }
+      ],
+      "thoughtsTokenCount": 281,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "hsLvas7GNbysqtsP8ojP2Q8"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Noise",
+      "reason": "Dealer inquiry regarding brochure PDF location is a non-manufacturing/non-supply chain event."
+    }
+  ]
+}

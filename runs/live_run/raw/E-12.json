@@ -1,0 +1,54 @@
+{
+  "event_id": "E-12",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 3791.42,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1081,
+    "candidatesTokenCount": 75,
+    "totalTokenCount": 1844
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Supplier Delay\",\"end_date\":\"2027-03-18\",\"part_id\":\"CAM-360\",\"plant_id\":\"P_IN\",\"reason\":\"port congestion\",\"shipment_id\":\"SH-0182\",\"start_date\":\"2027-03-15\"}]}",
+              "thoughtSignature": "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"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1081,
+      "candidatesTokenCount": 75,
+      "totalTokenCount": 1844,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1081
+        }
+      ],
+      "thoughtsTokenCount": 688,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "m8LvapTHAvWUmtkPsaSx-AU"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Supplier Delay",
+      "end_date": "2027-03-18",
+      "part_id": "CAM-360",
+      "plant_id": "P_IN",
+      "reason": "port congestion",
+      "shipment_id": "SH-0182",
+      "start_date": "2027-03-15"
+    }
+  ]
+}

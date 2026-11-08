@@ -1,0 +1,53 @@
+{
+  "event_id": "E-14",
+  "model": "gemini-3-flash-preview",
+  "wall_clock_latency_ms": 3385.39,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1033,
+    "candidatesTokenCount": 67,
+    "totalTokenCount": 1580
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\"incidents\":[{\"category\":\"Quality Hold\",\"end_date\":\"2027-02-24\",\"part_id\":\"part:HARN-B\",\"plant_id\":\"plant:P_TX\",\"reason\":\"moisture contamination\",\"start_date\":\"2027-02-22\"}]}",
+              "thoughtSignature": "Ep0LCpoLAWkUfRNm3Ncasa40mmgKMrvZOp/mSpcg1royMHbxY7KUJ+5rM7w/K/HafAqDi6Mkj+eWPW62aDMijNFIa29nfe6nknph1PSrioOVAh5ArMojYh7FxrxQ5DQoA0QxGtTNkwpZ6g269hGJqNu7sQTZZm1Eb9qf7wlOxJ9y4WeyE5IPhTXhn2UEt5dGngFICukV0uTiaBQxR92BeXjU+gJm2pItY33txV6w5A5P2+q/4eke/HH5Rp2jtUoYs8wtdtDQ8uMPugsJ7B2HYEiGorIFwq+Qzs+TY99yKp4oP7c7N/87Ft2/R/0YmLUj559/54dgMoVHaISbyu3PlGJDmGhCaDdfCWxwKPb6jKQ6hnhgNbuc6xwu7fpDNDtj1CLiy4ESwAvSgRdJ7R9UrjUA+nqeAJn5q0hCSLT1TCE0Hw+inLnOr3LLYMGGakSB0mbq9j7y+XdtkfvumImvrXlxVyMrDc7dRRS0NdWD4SEcUWJyBMvl5nXAAVUcWOApuQ2NyI0PalK0k/dGbVjhJXREdApkSJn5ZdINz3hw48UCliNs8Rw5QIjhfT9kYV+a5a7Lg5nl5vZMGrXicGpVttK9Cm0wUad710JrRQK/+z7/HXhYIh0mvFd5o8k8NtTcXjxfGteLe6W31u9ScwwtDPhpptD+zHfrS74nqSKvdaSKQ+v9/uimF1TktCZ1AHwMLPHX3PynLZUJfgyiKPzldJ1wK5tU/4IavacKa/73OgI/zzEk2y5/wjZP7yrG0ZnT1H5PD3xC9xuFVuqO7qm3GtjWOryGGyl4r7vfEBxHTtlPhaPxp+yfVCvgmjRoilOTxv87/L/tBtsAfGScMb8qnnLf0YU9IIwDuI4mxLe2Jih1g80U6r1JrysAZ/Nh7DEkPM7UBSiOdnqIB4gFETCkKh1f0L92WQ10Oqrj+pwnBjwBQp+xB20U+kBAojw5BK8qXZfCE8BgMI1+oSyFvq/OLHQGh+Qp4+O8N05W1C+SR1lwnOm6yanz+jfmOVB/+HAGLKP5IQbIq8I88xCRL33OiP+ar+64vm+xa3WHiDFjViZwnDRqtdJVi1a9IsFqU4T/1mVTu3mIQCGPUb1BS6rmP1LLM1lZSkshn3S0ViVi6ZMkVdzIoW8/yHJvYJ/+NcOsq35mNcllWhvf3DGMBgMxVmS1TVDvkYbje4ZQxvs2S4oHvm2csH7cPXeAenALKTj3xDlHLLotyrZDgq/TXeojNIvm4XYU/z8Y78rR1lH2Jx4BHbfKK7EIKDluS+N2L6HLkTUXQ1q50T8RovhmXn0NZRgPQ8a0oLIfutYT6xSJsdG3B+O19bTuwNXduGg6HCP50K32ULWJ2UTQU4/UAtQmV4rs5k2RhZW/bAFGTayuA7QHgEvE9CQG8WmzfzLhU/x5rj38ydeQPGX8io4snhkEU3lh49ZQkFOq/SUI1RmBrk4zgNYq0gQ1lgRVfm5DH79RAra4IbOOvJt8bEmcs5rvOskb9M7IGQ640uZdVtGcanBoSYLCO15+tBgDZ39pr9ZZFMksqWVuUS6CKT8sVN+Ygk8t9j6rVtQtPyGVt6Jq4TkyE46evSCQLrqDiRouUum0cNzMgSaIpli9JcvulgF3Xg8c3Z8SR0qm3flDX1sCer5CMC2YUYwAShdN1axrBMtuXl8MJR6nyZckCgSYNnKueTrIXlbhQ7+jc6eMJIJPdOmV6Ghtl///58BBc2P1tmpaWUFk6P6m69nfV83Vbgd8kPloI3Gwv6lLrTD8AtAfp3PODlocvk6NBsZLS0Bm3+e2sicVEqfwzcleaHUKT2b7i74wppWS823cccqAwdYThGR+c7QnrPEJ3cNC2sq7ITNfQUhbQdAZYwm2atR19s18wScHkLGDUV1RjlUTfyyQNepD/+ONiZpCmHw6RkfH9ZHF"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1033,
+      "candidatesTokenCount": 67,
+      "totalTokenCount": 1580,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1033
+        }
+      ],
+      "thoughtsTokenCount": 480,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "MsPvasGDLcup6dkPh-mZgAY"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Quality Hold",
+      "end_date": "2027-02-24",
+      "part_id": "part:HARN-B",
+      "plant_id": "plant:P_TX",
+      "reason": "moisture contamination",
+      "start_date": "2027-02-22"
+    }
+  ]
+}

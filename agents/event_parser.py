@@ -86,7 +86,46 @@ class EventParser:
                     p_end = inc.get("end_date")
                     if p_end == "null":
                         p_end = None
-                    # If end_date is missing for outage or delay, default to start_date
+                    # Ground entities to canonical IDs via knowledge graph aliases
+                    if p_plant:
+                        _, can_plant = self.kg.resolve_entity(p_plant)
+                        if can_plant:
+                            p_plant = can_plant
+                    if p_part:
+                        _, can_part = self.kg.resolve_entity(p_part)
+                        if can_part:
+                            p_part = can_part
+                    if p_supp:
+                        _, can_supp = self.kg.resolve_entity(p_supp)
+                        if can_supp:
+                            p_supp = can_supp
+
+                    # Recover missing end dates for operational categories if LLM omitted them
+                    cat = inc.get("category", "")
+                    if cat == "Supplier Delay" and (not p_end or p_end == p_start):
+                        try:
+                            d_start, d_end = self._extract_delay_dates(text)
+                            p_start = p_start or d_start
+                            p_end = d_end
+                        except Exception:
+                            pass
+                    elif cat == "Plant Outage" and (not p_end or p_end == p_start):
+                        try:
+                            d_start, d_end, d_restart = self._extract_outage_dates(text)
+                            p_start = p_start or d_start
+                            p_end = d_end
+                            p_min_resched = p_min_resched or d_restart
+                        except Exception:
+                            pass
+                    elif cat == "Quality Hold" and (not p_end or p_end == p_start):
+                        try:
+                            d_start, d_end = self._extract_quality_dates(text)
+                            p_start = p_start or d_start
+                            p_end = d_end
+                        except Exception:
+                            pass
+
+                    # If end_date is still missing for outage or delay, default to start_date
                     if p_start and not p_end:
                         p_end = p_start
 

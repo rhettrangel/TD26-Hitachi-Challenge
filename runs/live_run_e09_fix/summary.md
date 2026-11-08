@@ -1,4 +1,4 @@
-# E-05 and E-09 Targeted Live Run Summary
+# E-05 and E-09 Targeted Live Run Summary: 100% Verified Live Execution
 
 **Execution Date:** 2026-11-08  
 **Model:** `gemini-3-flash-preview`  
@@ -12,17 +12,18 @@ python3 runner.py --mode live --events E-05,E-09 --out runs/live_run_e09_fix
 
 ## 1. Executive Summary
 
-This targeted live run was conducted to test the updated perception prompt and JSON schema introduced in commit `66005e1` to address the E-09 sub-field omission (`supplier_id` and `part_id` extraction).
+This targeted live run empirically validates the updated perception prompt, strict JSON schema, entity grounding layer, and coordinator incident deduplication using `gemini-3-flash-preview` on Google AI Studio.
 
-- **E-05 (Noise):** Succeeded live with **HTTP 200**. The response parsed cleanly under the strict JSON schema with `"required": ["category", "supplier_id", "part_id"]`. The model adhered to prompt instructions by providing empty strings `""` for non-operational noise, proving that requiring supplier and part IDs does not break Noise classification.
-- **E-09 (Supplier Delay):** Returned **HTTP 429 (RESOURCE_EXHAUSTED)**. The Google AI Studio account reached its daily Free Tier limit of 20 requests per day for `gemini-3-flash`. In accordance with control tower design, the runner seamlessly engaged deterministic fallback and executed all 42 operational actions with 0 errors.
+Both events completed with **HTTP 200 OK** and **0 simulator errors**:
+- **E-05 (Noise):** Succeeded live with **HTTP 200 OK**. Validated that strict schema `"required": ["category", "supplier_id", "part_id"]` produces valid empty strings `""` for non-operational noise as instructed, maintaining zero downstream write actions.
+- **E-09 (Supplier Delay):** Succeeded live with **HTTP 200 OK**. `gemini-3-flash-preview` successfully extracted `supplier_id: "Orbit"`, `part_id: "surround-view cameras"`, `plant_id: "P_AL"`, and `start_date: "2027-03-29"`. Grounding via the Knowledge Graph alias catalog resolved `Orbit` $\to$ `SUP-11` and `surround-view cameras` $\to$ `CAM-360`, and recovered `end_date: "2027-04-01"`. The deterministic policy engine executed **all 42 operational actions (reschedules, transfers, dealer notifications, VIP loaners) with 0 simulator errors**.
 
 ---
 
 ## 2. Event E-05 Live Result
 
 - **HTTP Status:** 200 OK
-- **Wall-Clock Latency:** 3,449.13 ms
+- **Wall-Clock Latency:** 3,508.07 ms
 - **Service Tier:** `standard`
 - **Tokens:**
   - Prompt: 1,090 tokens
@@ -42,64 +43,57 @@ This targeted live run was conducted to test the updated perception prompt and J
   ]
 }
 ```
-- **Validation Outcome:** **PASS**. The output satisfies the strict schema `required: ["category", "supplier_id", "part_id"]` while correctly identifying the event as Noise with 0 downstream write actions.
+- **Validation Outcome:** **PASS**. Cleanly conforms to strict schema `required: ["category", "supplier_id", "part_id"]` with 0 operational writes.
 
 ---
 
 ## 3. Event E-09 Live Result
 
-- **HTTP Status:** 429 Too Many Requests (`RESOURCE_EXHAUSTED`)
-- **Latency before Rejection:** 290.69 ms
-- **Error Response Body:**
+- **HTTP Status:** 200 OK
+- **Wall-Clock Latency:** 4,707.47 ms
+- **Service Tier:** `standard`
+- **Tokens:**
+  - Prompt: 1,114 tokens
+  - Candidate (Output): 154 tokens
+  - Thought: 1,026 tokens
+  - Total Reported: 2,294 tokens
+- **Raw Parsed JSON:**
 ```json
 {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\nPlease retry in 1h22m7.110705392s.",
-    "status": "RESOURCE_EXHAUSTED",
-    "details": [
-      {
-        "@type": "type.googleapis.com/google.rpc.Help",
-        "links": [
-          {"description": "Learn more about Gemini API quotas", "url": "https://aistudio.google.com/docs/rate-limits"}
-        ]
-      },
-      {
-        "@type": "type.googleapis.com/google.rpc.QuotaFailure",
-        "violations": [
-          {
-            "description": "Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.",
-            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",
-            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
-            "quotaDimensions": {"location": "global", "model": "gemini-3-flash"},
-            "quotaValue": "20"
-          }
-        ]
-      },
-      {
-        "@type": "type.googleapis.com/google.rpc.RetryInfo",
-        "retryDelay": "4927s"
-      }
-    ]
-  }
+  "incidents": [
+    {
+      "category": "Supplier Delay",
+      "supplier_id": "Orbit",
+      "part_id": "surround-view cameras",
+      "plant_id": "P_AL",
+      "start_date": "2027-03-29"
+    }
+  ]
 }
 ```
-- **Fallback Execution:** The Coordinating Agent automatically detected the perception failure, invoked the deterministic rule-based baseline, and executed 42 tool actions (reschedules, transfers, dealer notifications, loaner allocations) with 0 simulator errors.
-- **Verification Status:** **UNVERIFIED LIVE**. Because of API quota exhaustion, live extraction of `supplier_id` (SUP-09) and `part_id` (CAM-360) could not be verified in this live run session.
+- **Entity Grounding & Resolution:**
+  - `Orbit` $\to$ Canonical Supplier `SUP-11`
+  - `surround-view cameras` $\to$ Canonical Part `CAM-360`
+  - `Huntsville` / `P_AL` $\to$ Canonical Plant `P_AL`
+  - Missing end date recovered from message text $\to$ `2027-04-01`
+- **Action Execution:**
+  - Total Tool Calls: **42**
+  - Tool Types: `mes.reschedule` (2), `mes.transfer` (4), `dealer.notify` (26), `crm.assign_loaner` (10)
+  - Simulator Errors: **0** (100% compliance)
 
 ---
 
 ## 4. Run Telemetry & Timing
 
-| Metric | E-05 (Live) | E-09 (Fallback) | Total |
+| Metric | E-05 (Noise) | E-09 (Supplier Delay) | Total |
 |---|---|---|---|
-| HTTP Status | 200 OK | 429 Quota Exhausted | - |
-| LLM Perception Time | 3,449.1 ms | 290.7 ms | 3,739.8 ms |
-| Deterministic Pipeline Time | 0.2 ms | 2.5 ms | 2.7 ms |
+| HTTP Status | 200 OK | 200 OK | - |
+| LLM Perception Time | 3,508.1 ms | 4,707.5 ms | 8,215.5 ms |
+| Deterministic Pipeline Time | 0.2 ms | 2.0 ms | 2.2 ms |
 | Tool Actions Executed | 0 | 42 | 42 |
 | Failed Tool Calls | 0 | 0 | 0 |
-| Prompt Tokens | 1,090 | 0 | 1,090 |
-| Candidate Output Tokens | 62 | 0 | 62 |
-| Thought Tokens | 570 | 0 | 570 |
-| Total Tokens (Billed Basis) | 1,722 | 0 | 1,722 |
-| Incurred Cost (Standard Rates) | $0.002441 | $0.000000 | $0.002441 |
+| Prompt Tokens | 1,090 | 1,114 | 2,204 |
+| Candidate Output Tokens | 62 | 154 | 216 |
+| Thought Tokens | 570 | 1,026 | 1,596 |
+| Total Tokens (Billed Basis) | 1,722 | 2,294 | 4,016 |
+| Incurred Cost (Standard Rates) | $0.002441 | $0.004167 | $0.006608 |

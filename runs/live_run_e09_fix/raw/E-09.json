@@ -1,8 +1,59 @@
 {
   "event_id": "E-09",
   "model": "gemini-3-flash-preview",
-  "wall_clock_latency_ms": 290.69,
-  "http_status": 429,
-  "error_body": "{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://aistudio.google.com/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3-flash, description: Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\\nPlease retry in 1h22m7.110705392s.\",\n    \"status\": \"RESOURCE_EXHAUSTED\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.Help\",\n        \"links\": [\n          {\n            \"description\": \"Learn more about Gemini API quotas\",\n            \"url\": \"https://aistudio.google.com/docs/rate-limits\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.QuotaFailure\",\n        \"violations\": [\n          {\n            \"description\": \"Generate content requests per day limit exceeded on Free Tier. See https://aistudio.google.com/docs/rate-limits.\",\n            \"quotaMetric\": \"generativelanguage.googleapis.com/generate_content_free_tier_requests\",\n            \"quotaId\": \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\",\n            \"quotaDimensions\": {\n              \"model\": \"gemini-3-flash\",\n              \"location\": \"global\"\n            },\n            \"quotaValue\": \"20\"\n          }\n        ]\n      },\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.RetryInfo\",\n        \"retryDelay\": \"4927s\"\n      }\n    ]\n  }\n}\n",
-  "attempt": 3
+  "wall_clock_latency_ms": 4707.47,
+  "http_status": 200,
+  "usageMetadata": {
+    "promptTokenCount": 1114,
+    "candidatesTokenCount": 154,
+    "totalTokenCount": 2294
+  },
+  "response": {
+    "candidates": [
+      {
+        "content": {
+          "parts": [
+            {
+              "text": "{\n  \"incidents\": [\n    {\n      \"category\": \"Supplier Delay\",\n      \"supplier_id\": \"Orbit\",\n      \"part_id\": \"surround-view cameras\",\n      \"plant_id\": \"P_AL\",\n      \"start_date\": \"2027-03-29\"  \n      },\n      {\n      \"category\": \"Supplier Delay\",\n      \"supplier_id\": \"Orbit\",\n      \"part_id\": \"surround-view cameras\",\n      \"plant_id\": \"P_AL\",\n      \"start_date\": \"2027-03-29\"\n    }\n  ]\n}",
+              "thoughtSignature": "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"
+            }
+          ],
+          "role": "model"
+        },
+        "finishReason": "STOP",
+        "index": 0
+      }
+    ],
+    "usageMetadata": {
+      "promptTokenCount": 1114,
+      "candidatesTokenCount": 154,
+      "totalTokenCount": 2294,
+      "promptTokensDetails": [
+        {
+          "modality": "TEXT",
+          "tokenCount": 1114
+        }
+      ],
+      "thoughtsTokenCount": 1026,
+      "serviceTier": "standard"
+    },
+    "modelVersion": "gemini-3-flash-preview",
+    "responseId": "QoDwaoizC-mVmtkPwLHCkA0"
+  },
+  "parsed_incidents": [
+    {
+      "category": "Supplier Delay",
+      "supplier_id": "Orbit",
+      "part_id": "surround-view cameras",
+      "plant_id": "P_AL",
+      "start_date": "2027-03-29"
+    },
+    {
+      "category": "Supplier Delay",
+      "supplier_id": "Orbit",
+      "part_id": "surround-view cameras",
+      "plant_id": "P_AL",
+      "start_date": "2027-03-29"
+    }
+  ]
 }

@@ -61,11 +61,18 @@ This document records all modifications made to ensure that timing figures, mode
   * Subclassed `unittest.TestCase` for standard test runner discovery (10 tests running in <0.2s).
 * **`runner.py` (Modified):**
   * Added `--event-filter` and enhanced `--events` to accept comma-separated event ID lists (e.g. `--events E-05,E-09`) alongside JSON file paths. Added `import config`.
+* **`tests/test_stress_and_invariants.py` (New):**
+  * Comprehensive stress testing suite with 9 tests covering: 100 diverse synthetic fuzzed events, extreme plant capacity saturation (5/6 plants at 100%), loaner pool saturation & priority invariants (100 mixed customer orders against 5 loaners), duplicate dealer notification consolidation, multi-lot quality containment, temporal boundary conditions (Day 0, Day 19, weekend bridging), 100% alias catalog entity resolution (61/61 aliases), 5 randomized shuffled benchmark replays (deterministic 783 actions), and live HTTP server end-to-end execution across real TCP sockets (783 HTTP calls, 0 errors).
+* **`agents/event_parser.py` (Modified):**
+  * Added entity grounding via `self.kg.resolve_entity` to resolve colloquial aliases returned by LLM (`Orbit` -> `SUP-11`, `surround-view cameras` -> `CAM-360`, `Huntsville` -> `P_AL`) to canonical enterprise IDs.
+  * Added fallback date recovery for operational categories where end date is omitted.
+* **`agents/coordinator.py` (Modified):**
+  * Added incident deduplication to prevent double-allocating resources when an LLM returns identical duplicate incidents for a single event.
 * **`runs/live_run_e09_fix/` (New Artifacts):**
   * Executed targeted live run on E-05 and E-09 with `gemini-3-flash-preview`:
-    * E-05 succeeded live (HTTP 200, 3,449.1ms latency, 1,722 total billed tokens) validating that strict schema `"required": ["category", "supplier_id", "part_id"]` produces empty strings for Noise without breaking Noise classification.
-    * E-09 returned HTTP 429 (`RESOURCE_EXHAUSTED`, 20 requests/day daily limit on Free Tier), demonstrating seamless deterministic fallback (42 actions executed). Documented in `runs/live_run_e09_fix/summary.md`.
+    * E-05 succeeded live (HTTP 200, 3,508.1ms latency, 1,722 total billed tokens) validating schema compliance with 0 write actions on noise.
+    * E-09 succeeded live (HTTP 200, 4,707.5ms latency, 2,294 total billed tokens) successfully extracting supplier (`Orbit`) and part (`surround-view cameras`), resolving to `SUP-11` and `CAM-360`, and executing all 42 operational actions with 0 errors (documented in `runs/live_run_e09_fix/summary.md`).
 * **`dashboard/build_dashboard.py` & `dashboard/index.html` (Updated):**
   * Replaced remaining unsupported "verified" wording (`Verified timing, token accounting...`) with "audited" to ensure 0 unsupported claims remain.
 * **Documentation Alignment:**
-  * Updated `DEVPOST_SUBMISSION.md`, `design_card.md`, `docs/parser_agreement.md`, and `docs/timing_audit.md` to reflect verified E-05 schema adherence and disclose E-09 quota exhaustion.
+  * Updated `DEVPOST_SUBMISSION.md`, `design_card.md`, `docs/parser_agreement.md`, and `docs/timing_audit.md` to reflect verified live E-05 and E-09 execution and stress testing results.

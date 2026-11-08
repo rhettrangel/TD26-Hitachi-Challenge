@@ -19,8 +19,8 @@
     "unconfirmed": false,
     "is_noise": true,
     "telemetry": {
-      "llm_perception_time_ms": 3449.13,
-      "deterministic_time_ms": 0.22,
+      "llm_perception_time_ms": 3508.07,
+      "deterministic_time_ms": 0.21,
       "prompt_tokens": 1090,
       "output_tokens": 62,
       "model_name": "gemini-3-flash-preview"
@@ -89,7 +89,7 @@
     ],
     "reasoning_trace": [
       "Coordinator received event E-09 (supplier email).",
-      "Perception parsed 1 operational incident(s) [Mode: gemini-3-flash-preview].",
+      "Perception parsed 2 operational incident(s) [Mode: gemini-3-flash-preview].",
       "Identified inbound shipment SH-0256 delayed from 2027-03-29 to 2027-04-01.",
       "Part CAM-360 (surround-view camera kit) is required in BOM of models: SUMMIT, VOYAGER.",
       "Found 6 production orders at P_AL between 2027-03-29 and 2027-04-01 requiring CAM-360."
@@ -99,42 +99,12 @@
         "tool": "mes.reschedule",
         "args": {
           "production_order_id": "PO-0436",
-          "new_date": "2027-04-01"
-        },
-        "ok": true,
-        "result": {
-          "ok": true,
-          "production_order_id": "PO-0436",
-          "plant_id": "P_AL",
-          "date": "2027-04-01"
-        },
-        "agent": "MESPlannerSpecialist"
-      },
-      {
-        "tool": "mes.reschedule",
-        "args": {
-          "production_order_id": "PO-0438",
-          "new_date": "2027-04-01"
-        },
-        "ok": true,
-        "result": {
-          "ok": true,
-          "production_order_id": "PO-0438",
-          "plant_id": "P_AL",
-          "date": "2027-04-01"
-        },
-        "agent": "MESPlannerSpecialist"
-      },
-      {
-        "tool": "mes.reschedule",
-        "args": {
-          "production_order_id": "PO-0439",
           "new_date": "2027-04-02"
         },
         "ok": true,
         "result": {
           "ok": true,
-          "production_order_id": "PO-0439",
+          "production_order_id": "PO-0436",
           "plant_id": "P_AL",
           "date": "2027-04-02"
         },
@@ -143,14 +113,46 @@
       {
         "tool": "mes.reschedule",
         "args": {
+          "production_order_id": "PO-0438",
+          "new_date": "2027-04-02"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "production_order_id": "PO-0438",
+          "plant_id": "P_AL",
+          "date": "2027-04-02"
+        },
+        "agent": "MESPlannerSpecialist"
+      },
+      {
+        "tool": "mes.transfer",
+        "args": {
+          "production_order_id": "PO-0439",
+          "to_plant_id": "P_TX",
+          "new_date": "2027-04-02"
+        },
+        "ok": true,
+        "result": {
+          "ok": true,
+          "production_order_id": "PO-0439",
+          "plant_id": "P_TX",
+          "date": "2027-04-02"
+        },
+        "agent": "MESPlannerSpecialist"
+      },
+      {
+        "tool": "mes.transfer",
+        "args": {
           "production_order_id": "PO-0441",
+          "to_plant_id": "P_KY",
           "new_date": "2027-04-02"
         },
         "ok": true,
         "result": {
           "ok": true,
           "production_order_id": "PO-0441",
-          "plant_id": "P_AL",
+          "plant_id": "P_KY",
           "date": "2027-04-02"
         },
         "agent": "MESPlannerSpecialist"
@@ -160,14 +162,14 @@
         "args": {
           "production_order_id": "PO-0442",
           "to_plant_id": "P_TX",
-          "new_date": "2027-04-01"
+          "new_date": "2027-04-02"
         },
         "ok": true,
         "result": {
           "ok": true,
           "production_order_id": "PO-0442",
           "plant_id": "P_TX",
-          "date": "2027-04-01"
+          "date": "2027-04-02"
         },
         "agent": "MESPlannerSpecialist"
       },
@@ -176,14 +178,14 @@
         "args": {
           "production_order_id": "PO-0444",
           "to_plant_id": "P_KY",
-          "new_date": "2027-04-01"
+          "new_date": "2027-04-02"
         },
         "ok": true,
         "result": {
           "ok": true,
           "production_order_id": "PO-0444",
           "plant_id": "P_KY",
-          "date": "2027-04-01"
+          "date": "2027-04-02"
         },
         "agent": "MESPlannerSpecialist"
       },
@@ -732,36 +734,38 @@
         "tool": "mes.reschedule",
         "args": {
           "production_order_id": "PO-0436",
-          "new_date": "2027-04-01"
+          "new_date": "2027-04-02"
         },
-        "reasoning": "Rescheduled PO-0436 at P_AL to earliest feasible slot on 2027-04-01."
+        "reasoning": "Rescheduled PO-0436 at P_AL to earliest feasible slot on 2027-04-02."
       },
       {
         "event_id": "E-09",
         "tool": "mes.reschedule",
         "args": {
           "production_order_id": "PO-0438",
-          "new_date": "2027-04-01"
+          "new_date": "2027-04-02"
         },
-        "reasoning": "Rescheduled PO-0438 at P_AL to earliest feasible slot on 2027-04-01."
+        "reasoning": "Rescheduled PO-0438 at P_AL to earliest feasible slot on 2027-04-02."
       },
       {
         "event_id": "E-09",
-        "tool": "mes.reschedule",
+        "tool": "mes.transfer",
         "args": {
           "production_order_id": "PO-0439",
+          "to_plant_id": "P_TX",
           "new_date": "2027-04-02"
         },
-        "reasoning": "Rescheduled PO-0439 at P_AL to earliest feasible slot on 2027-04-02."
+        "reasoning": "Same plant P_AL at capacity; transferred PO-0439 (SUMMIT) to P_TX on 2027-04-02."
       },
       {
         "event_id": "E-09",
-        "tool": "mes.reschedule",
+        "tool": "mes.transfer",
         "args": {
           "production_order_id": "PO-0441",
+          "to_plant_id": "P_KY",
           "new_date": "2027-04-02"
         },
-        "reasoning": "Rescheduled PO-0441 at P_AL to earliest feasible slot on 2027-04-02."
+        "reasoning": "Same plant P_AL at capacity; transferred PO-0441 (VOYAGER) to P_KY on 2027-04-02."
       },
       {
         "event_id": "E-09",
@@ -769,9 +773,9 @@
         "args": {
           "production_order_id": "PO-0442",
           "to_plant_id": "P_TX",
-          "new_date": "2027-04-01"
+          "new_date": "2027-04-02"
         },
-        "reasoning": "Same plant P_AL at capacity; transferred PO-0442 (SUMMIT) to P_TX on 2027-04-01."
+        "reasoning": "Same plant P_AL at capacity; transferred PO-0442 (SUMMIT) to P_TX on 2027-04-02."
       },
       {
         "event_id": "E-09",
@@ -779,9 +783,9 @@
         "args": {
           "production_order_id": "PO-0444",
           "to_plant_id": "P_KY",
-          "new_date": "2027-04-01"
+          "new_date": "2027-04-02"
         },
-        "reasoning": "Same plant P_AL at capacity; transferred PO-0444 (VOYAGER) to P_KY on 2027-04-01."
+        "reasoning": "Same plant P_AL at capacity; transferred PO-0444 (VOYAGER) to P_KY on 2027-04-02."
       },
       {
         "event_id": "E-09",
@@ -1208,10 +1212,10 @@
     "unconfirmed": false,
     "is_noise": false,
     "telemetry": {
-      "llm_perception_time_ms": 290.69,
-      "deterministic_time_ms": 2.49,
-      "prompt_tokens": 0,
-      "output_tokens": 0,
+      "llm_perception_time_ms": 4707.47,
+      "deterministic_time_ms": 1.98,
+      "prompt_tokens": 1114,
+      "output_tokens": 154,
       "model_name": "gemini-3-flash-preview"
     }
   }

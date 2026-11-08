@@ -116,7 +116,16 @@ class CoordinatingAgent:
         is_noise = False
         is_unconfirmed = False
 
+        # Deduplicate identical incidents within the same event to avoid double-allocation
+        unique_incidents = []
+        seen_incident_keys = set()
         for inc in incidents:
+            inc_key = (inc.category, inc.plant_id, inc.part_id, inc.lot_id, inc.shipment_id, inc.start_date, inc.end_date)
+            if inc_key not in seen_incident_keys:
+                seen_incident_keys.add(inc_key)
+                unique_incidents.append(inc)
+
+        for inc in unique_incidents:
             categories.add(inc.category)
             if inc.category == "Noise":
                 is_noise = True
